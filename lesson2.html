@@ -39,7 +39,6 @@
     <header class="bg-indigo-600 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <i class="fas fa-language text-3xl"></i>
                 <h1 class="text-2xl font-bold">Spanish Visual Addon for Language Transfer</h1>
             </div>
         </div>
@@ -241,10 +240,13 @@
                                     </div>
 
                                     <!-- Exercise Navigation -->
-                                    <div class="flex justify-between">
-                                        <button onclick="window.location.href='https://www.languagetransfer.org'" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition">
-                                            <i class="fas fa-arrow-left mr-2"></i> Previous
-                                        </button>
+                                    <div class="flex justify-between px-4 py-4">
+                                        <a href="lesson1.html">
+                                            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition">
+                                                <i class="fas fa-arrow-left mr-2"></i> Previous
+                                            </button>
+                                        </a>
+
                                         <button id="next-btn" disabled class="bg-gray-300 text-white px-4 py-2 rounded-lg font-medium cursor-not-allowed transition">
                                             Next Exercise <i class="fas fa-arrow-right ml-2"></i>
                                         </button>
@@ -264,32 +266,6 @@
                     <p class="text-gray-400 max-w-md">
                         A visual supplement to the Language Transfer audio course. This is not an official Language Transfer product.
                     </p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Resources</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">All Lessons</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Practice Exercises</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Vocabulary Lists</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Support</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Feedback</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Connect</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
@@ -448,7 +424,7 @@
                 nextBtn.disabled = false;
                 nextBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
                 nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
-                nextBtn.onclick = () => window.location.href = 'https://www.languagetransfer.org';
+                nextBtn.onclick = () => window.location.href = 'lesson3.html';
             }
         }
     </script>
