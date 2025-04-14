@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Visual Addon | Language Transfer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .audio-wave {
+            animation: audioWave 1.5s infinite ease-in-out;
+        }
+
+        @keyframes audioWave {
+            0%, 100% {
+                height: 20px;
+            }
+
+            50% {
+                height: 10px;
+            }
+        }
+
+        .audio-wave:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .audio-wave:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .audio-wave:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .audio-wave:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-2xl font-bold">Spanish Visual Addon for Language Transfer</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left Column - Audio Player -->
+            <div class="lg:w-1/3 bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Language Transfer Audio</h2>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Course: Complete Spanish</span>
+                        <span class="text-sm font-medium text-indigo-600">Lesson 5 of 90</span>
+                    </div>
+
+                    <!-- Audio Player -->
+                    <div class="bg-gray-100 rounded-lg p-4 mb-6">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                                src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/complete-spanish-track-5-language-transfer-the-thinking-method&color=%234f46e5&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+                        </iframe>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="font-bold text-gray-800 mb-2">Lesson Notes</h3>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <p class="text-sm text-gray-700">Key concept: The pronoun for "I" in Spanish is "Yo," it's usually only used for emphasis. </p>
+                        </div>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                            <p class="text-sm text-gray-700">
+                                Vowels in Spanish are always pronounced the same:<br>
+                                A – “ah” (like father)<br>
+                                E – “eh” (like bed)<br>
+                                I – “ee” (like machine)<br>
+                                O – “oh” (like more)<br>
+                                U – “oo” (like tune)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-2">Relevant Links</h3>
+
+                        <a href="https://soundcloud.com/languagetransfer/sets/complete-spanish"
+                           target="_blank"
+                           class="block mb-2 text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Visit SoundCloud to Download the Original Tracks
+                        </a>
+
+                        <a href="https://downloads.languagetransfer.org/spanish/spanish.zip"
+                           target="_blank"
+                           class="block mb-2 text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Download All Audio Lessons
+                        </a>
+
+                        <a href="https://static1.squarespace.com/static/5c69bfa4f4e531370e74fa44/t/5cdacdf3eef1a1286d2a2b0c/1557843500162/Complete+Spanish+transcript+-+2019+final.pdf"
+                           target="_blank"
+                           class="block text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Full Transcript
+                        </a>
+
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-1 gap-4">
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                                <h3 class="font-bold text-blue-800 mb-2 flex items-center">
+                                    <i class="fas fa-headphones mr-2"></i> Audio First
+                                </h3>
+                                <p class="text-sm text-gray-700">Listen to the audio thoroughly. Ensure that you pause each time before Mihalis expects an answer from the student.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Exercises -->
+            <div class="lg:w-2/3">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6">Practice Exercises</h2>
+
+                        <!-- Progress -->
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Lesson Progress</span>
+                                <span class="text-sm font-medium text-indigo-600" id="progress-text">0/6 exercises</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 1 - Multiple Choice -->
+                        <div class="exercise-card exercise-1" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">1</span>
+                                    </div>
+                                    <div class="flex-grow w-full">
+                                        <!-- Make this container flexible -->
+                                        <h3 class="font-bold text-gray-800 mb-2">
+                                            How do you say "I don't want to celebrate" with emphasis on the "I" part in Spanish?
+                                        </h3>
+                                        <p class="text-sm text-gray-600 mb-4">
+                                            The pronoun for it isn't usually required in Spanish.
+                                        </p>
+                                        <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                A. Quiero celebrar
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                B. No quiero celebrar
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                C. Yo quiero celebrar
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
+                                                D. Yo no quiero celebrar
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="check-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Check Answer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 2 - Fill in the Blank -->
+                        <div class="exercise-card exercise-2" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">2</span>
+                                    </div>
+                                    <div class="w-full">
+                                        <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
+                                        <p class="text-sm text-gray-600 mb-4">"I want to find out" (Hint: in Spanish you would say it like "I want to inform myself).</p>
+                                        <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
+                                            <p class="text-gray-800">
+                                                Yo quiero<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="text"
+                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   placeholder="Type your answer"
+                                                   data-answer="informarme">
+                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exercise 3 - Matching -->
+                        <div class="exercise-card exercise-3" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">3</span>
+                                    </div>
+                                    <div class="w-full">
+                                        <h3 class="font-bold text-gray-800 mb-2">Find the matching words:</h3>
+                                        <p class="text-sm text-gray-600 mb-4"></p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="left" data-id="B">
+                                                <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">A</span>
+                                                <span>To generate</span>
+                                            </div>
+                                            <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="right" data-id="1">
+                                                <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">1</span>
+                                                <span>Generar</span>
+                                            </div>
+                                            <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="left" data-id="A">
+                                                <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">B</span>
+                                                <span>To concentrate</span>
+                                            </div>
+                                            <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="right" data-id="2">
+                                                <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">2</span>
+                                                <span>Concentración</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <button class="check-matches-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition"
+                                                    data-correct-left="B" data-correct-right="1">
+                                                Check Matches
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exercise 4 - Fill in the Blank -->
+                        <div class="exercise-card exercise-4" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">4</span>
+                                    </div>
+                                    <div class="w-full">
+                                        <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
+                                        <p class="text-sm text-gray-600 mb-4">"I don't want to complicate."</p>
+                                        <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
+                                            <p class="text-gray-800">
+                                                Yo no<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="text"
+                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   placeholder="Type your answer"
+                                                   data-answer="quiero complicar">
+                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exercise 5 - Multiple Choice -->
+                        <div class="exercise-card exercise-5" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">5</span>
+                                    </div>
+                                    <div class="flex-grow w-full">
+                                        <!-- Make this container flexible -->
+                                        <h3 class="font-bold text-gray-800 mb-2">
+                                            How do you say "I love you" in Spanish?
+                                        </h3>
+                                        <p class="text-sm text-gray-600 mb-4">
+                                            Refer to the Key Concept notes for assistance.
+                                        </p>
+                                        <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
+                                                A. Te quiero
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
+                                                B. Te amo
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                C. Te amar
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                D. Tu quiero
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="check-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Check Answer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exercise 6 - Fill in the Blank -->
+                        <div class="exercise-card exercise-6" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">6</span>
+                                    </div>
+                                    <div class="w-full">
+                                        <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
+                                        <p class="text-sm text-gray-600 mb-4">"I want to incorporate myself." (Hint: incorporation can be converted to the verb that means "to incorporate" in Spanish. The word for "myself" is then added after the verb with no spaces in-between)</p>
+                                        <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
+                                            <p class="text-gray-800">
+                                                Yo quiero<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="text"
+                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   placeholder="Type your answer"
+                                                   data-answer="incorporarme">
+                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exercise Navigation -->
+                        <div class="flex justify-between px-4 py-4">
+                            <a href="lesson4.html">
+                                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition">
+                                    <i class="fas fa-arrow-left mr-2"></i> Previous
+                                </button>
+                            </a>
+
+                            <button id="next-btn" disabled class="bg-gray-300 text-white px-4 py-2 rounded-lg font-medium cursor-not-allowed transition">
+                                Next Exercise <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Spanish Visual Companion</h3>
+                    <p class="text-gray-400 max-w-md">
+                        A visual supplement to the Language Transfer audio course. This is not an official Language Transfer product.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p class="mt-2">Language Transfer audio used with educational intent.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function markExerciseComplete(className) {
+            const exercise = document.querySelector(`.${className}`);
+            if (exercise && exercise.dataset.complete !== "true") {
+                exercise.dataset.complete = "true";
+                updateProgress();
+            }
+        }
+
+        document.querySelectorAll('.exercise-card').forEach(card => {
+            const checkBtn = card.querySelector('.check-btn');
+            const answerButtons = card.querySelectorAll('.answer-btn');
+            const fillInput = card.querySelector('.fill-input');
+            const submitFillBtn = card.querySelector('.submit-fill-btn');
+            const matchBtn = card.querySelector('.check-matches-btn');
+            const leftItems = card.querySelectorAll('.match-item[data-group="left"]');
+            const rightItems = card.querySelectorAll('.match-item[data-group="right"]');
+
+            // MULTIPLE CHOICE
+            if (checkBtn && answerButtons.length) {
+                let selected = null;
+
+                answerButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        answerButtons.forEach(b => b.classList.remove('ring', 'ring-blue-400'));
+                        selected = btn;
+                        btn.classList.add('ring', 'ring-blue-400');
+                    });
+                });
+
+                checkBtn.addEventListener('click', () => {
+                    if (!selected) {
+                        alert('Please select an answer first.');
+                        return;
+                    }
+
+                    answerButtons.forEach(btn => {
+                        const isCorrect = btn.dataset.correct === 'true';
+
+                        btn.classList.remove('bg-green-100', 'bg-red-100', 'border-green-500', 'border-red-500');
+
+                        if (btn === selected) {
+                            btn.classList.add(isCorrect ? 'bg-green-100' : 'bg-red-100');
+                            btn.classList.add(isCorrect ? 'border-green-500' : 'border-red-500');
+                        }
+                    });
+
+                    // Explicitly highlight the correct button in *this card only*
+                    const correctBtn = [...answerButtons].find(btn => btn.dataset.correct === 'true');
+                    if (correctBtn && correctBtn !== selected) {
+                        correctBtn.classList.add('bg-green-100', 'border-green-500');
+                        answerButtons.forEach(btn => btn.disabled = true);
+                        checkBtn.disabled = true;
+                    }
+
+
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+
+            }
+
+            // FILL IN THE BLANK
+if (fillInput && submitFillBtn) {
+    submitFillBtn.addEventListener('click', () => {
+        const userAnswer = fillInput.value.trim();
+        const correctAnswer = fillInput.dataset.answer.trim();
+
+        const lowerUser = userAnswer.toLowerCase();
+        const lowerCorrect = correctAnswer.toLowerCase();
+
+        const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const removeSpaces = str => str.replace(/\s+/g, "");
+
+        fillInput.classList.remove(
+            'border-green-500', 'bg-green-100',
+            'border-red-500', 'bg-red-100',
+            'border-yellow-500', 'bg-yellow-100'
+        );
+
+        if (lowerUser === lowerCorrect) {
+            // Exact match
+            fillInput.classList.add('border-green-500', 'bg-green-100');
+        } else if (removeAccents(lowerUser) === removeAccents(lowerCorrect)) {
+            // Match ignoring accents only
+            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+            fillInput.value = correctAnswer;
+        } else if (
+            removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(lowerCorrect))
+        ) {
+            // Match ignoring accents AND spaces
+            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+            fillInput.value = correctAnswer;
+        } else {
+            // Incorrect
+            fillInput.classList.add('border-red-500', 'bg-red-100');
+            fillInput.value = correctAnswer;
+        }
+
+        fillInput.disabled = true;
+        submitFillBtn.disabled = true;
+
+        card.dataset.complete = "true";
+        updateProgress();
+    });
+}
+
+
+
+            // MATCHING
+            if (matchBtn && leftItems.length && rightItems.length) {
+                let selectedLeft = null;
+                let selectedRight = null;
+
+                leftItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        leftItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
+                        item.classList.add('ring-2', 'ring-indigo-400');
+                        selectedLeft = item;
+                    });
+                });
+
+                rightItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        rightItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
+                        item.classList.add('ring-2', 'ring-indigo-400');
+                        selectedRight = item;
+                    });
+                });
+
+                matchBtn.addEventListener('click', () => {
+                    const correctLeftId = matchBtn.dataset.correctLeft;
+                    const correctRightId = matchBtn.dataset.correctRight;
+
+                    const selectedLeftId = selectedLeft?.dataset.id;
+                    const selectedRightId = selectedRight?.dataset.id;
+
+                    if (!selectedLeftId || !selectedRightId) return;
+
+                    const isCorrect = selectedLeftId === correctLeftId && selectedRightId === correctRightId;
+
+                    const mark = (el, correct) => {
+                        el.classList.add(correct ? 'bg-green-100' : 'bg-red-100');
+                        el.classList.add(correct ? 'border-green-500' : 'border-red-500');
+                    };
+
+                    mark(selectedLeft, selectedLeftId === correctLeftId);
+                    mark(selectedRight, selectedRightId === correctRightId);
+
+                    if (!isCorrect) {
+                        const correctLeftEl = card.querySelector(`.match-item[data-group="left"][data-id="${correctLeftId}"]`);
+                        const correctRightEl = card.querySelector(`.match-item[data-group="right"][data-id="${correctRightId}"]`);
+                        mark(correctLeftEl, true);
+                        mark(correctRightEl, true);
+                    }
+
+                    [...leftItems, ...rightItems].forEach(i => i.classList.add('pointer-events-none'));
+                    matchBtn.disabled = true;
+
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+            }
+        });
+    </script>
+    <script>
+        function markExerciseComplete(className) {
+            const exercise = document.querySelector(`.${className}`);
+            if (exercise && exercise.dataset.complete !== "true") {
+                exercise.dataset.complete = "true";
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const total = 6; // Change this to match your total exercises
+            const completed = Array.from(document.querySelectorAll('.exercise-card'))
+                .filter(card => card.parentElement.closest('.exercise-card') === null && card.dataset.complete === "true")
+                .length;
+            console.log(`Completed exercises: ${completed}`);  // Debugging line
+            const percent = (completed / total) * 100;
+            console.log(`Progress: ${percent}%`);  // Debugging line
+
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (progressText) progressText.textContent = `${completed}/${total} exercises`;
+
+            if (nextBtn && completed === total) {
+                nextBtn.disabled = false;
+                nextBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
+                nextBtn.onclick = () => window.location.href = 'lesson6q.html';
+            }
+        }
+
+    </script>
+    <script>
+        const lessonMatch = window.location.pathname.match(/lesson(\d+)\.html/i);
+        if (lessonMatch) {
+            const lessonNumber = parseInt(lessonMatch[1]);
+            const currentLesson = `lesson${lessonNumber}.html`;
+            const savedLesson = localStorage.getItem('lastLesson');
+
+            // Only update if this lesson is newer than the saved one
+            if (!savedLesson || parseInt(savedLesson.match(/\d+/)[0]) < lessonNumber) {
+                localStorage.setItem('lastLesson', currentLesson);
+            }
+        }
+    </script>
+
+
+</body>
+</html>
