@@ -441,41 +441,49 @@
             }
 
             // FILL IN THE BLANK
-            if (fillInput && submitFillBtn) {
-                submitFillBtn.addEventListener('click', () => {
-                    const userAnswer = fillInput.value.trim();
-                    const correctAnswer = fillInput.dataset.answer.trim();
+if (fillInput && submitFillBtn) {
+    submitFillBtn.addEventListener('click', () => {
+        const userAnswer = fillInput.value.trim();
+        const correctAnswer = fillInput.dataset.answer.trim();
 
-                    // Helper: removes accents from letters (diacritics)
-                    const normalize = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const lowerUser = userAnswer.toLowerCase();
+        const lowerCorrect = correctAnswer.toLowerCase();
 
-                    fillInput.classList.remove(
-                        'border-green-500', 'bg-green-100',
-                        'border-red-500', 'bg-red-100',
-                        'border-yellow-500', 'bg-yellow-100'
-                    );
+        const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const removeSpaces = str => str.replace(/\s+/g, "");
 
-                    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                        // Exact match
-                        fillInput.classList.add('border-green-500', 'bg-green-100');
-                    } else if (normalize(userAnswer.toLowerCase()) === normalize(correctAnswer.toLowerCase())) {
-                        // Match when ignoring accents
-                        fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
-                        fillInput.value = correctAnswer; // Replace with fully accented version
-                    } else {
-                        // Incorrect
-                        fillInput.classList.add('border-red-500', 'bg-red-100');
-                        fillInput.value = correctAnswer;
-                    }
+        fillInput.classList.remove(
+            'border-green-500', 'bg-green-100',
+            'border-red-500', 'bg-red-100',
+            'border-yellow-500', 'bg-yellow-100'
+        );
 
-                    fillInput.disabled = true;
-                    submitFillBtn.disabled = true;
+        if (lowerUser === lowerCorrect) {
+            // Exact match
+            fillInput.classList.add('border-green-500', 'bg-green-100');
+        } else if (removeAccents(lowerUser) === removeAccents(lowerCorrect)) {
+            // Match ignoring accents only
+            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+            fillInput.value = correctAnswer;
+        } else if (
+            removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(lowerCorrect))
+        ) {
+            // Match ignoring accents AND spaces
+            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+            fillInput.value = correctAnswer;
+        } else {
+            // Incorrect
+            fillInput.classList.add('border-red-500', 'bg-red-100');
+            fillInput.value = correctAnswer;
+        }
 
-                    card.dataset.complete = "true";
-                    updateProgress();
-                });
-            }
+        fillInput.disabled = true;
+        submitFillBtn.disabled = true;
 
+        card.dataset.complete = "true";
+        updateProgress();
+    });
+}
 
             // MATCHING
             if (matchBtn && leftItems.length && rightItems.length) {
