@@ -12,23 +12,33 @@
             transform: rotate(-90deg);
             transform-origin: 50% 50%;
         }
-       
+
         .audio-wave {
             animation: audioWave 1.5s infinite ease-in-out;
         }
+
         @keyframes audioWave {
-            0%, 100% { height: 20px; }
-            50% { height: 10px; }
+            0%, 100% {
+                height: 20px;
+            }
+
+            50% {
+                height: 10px;
+            }
         }
+
         .audio-wave:nth-child(2) {
             animation-delay: 0.2s;
         }
+
         .audio-wave:nth-child(3) {
             animation-delay: 0.4s;
         }
+
         .audio-wave:nth-child(4) {
             animation-delay: 0.6s;
         }
+
         .audio-wave:nth-child(5) {
             animation-delay: 0.8s;
         }
@@ -53,20 +63,20 @@
                     <h2 class="text-xl font-bold text-gray-800 mb-4">Language Transfer Audio</h2>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-sm text-gray-500">Course: Complete Spanish</span>
-                        <span class="text-sm font-medium text-indigo-600">Lesson 3 of 90</span>
+                        <span class="text-sm font-medium text-indigo-600">Lesson 4 of 90</span>
                     </div>
 
                     <!-- Audio Player -->
                     <div class="bg-gray-100 rounded-lg p-4 mb-6">
                         <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                                src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/complete-spanish-track-3-language-transfer-the-thinking-method-1&color=%234f46e5&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+                                src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/complete-spanish-track-4-language-transfer-the-thinking-method&color=%234f46e5&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
                         </iframe>
                     </div>
 
                     <div class="mb-6">
                         <h3 class="font-bold text-gray-800 mb-2">Lesson Notes</h3>
                         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                            <p class="text-sm text-gray-700">Key concept: As mentioned previously, English and Spanish have even more convertable words. Most words in English ending in -ant or -ent are the same in Spanish but with an added e. For example: important -> importante. -Mente is also the equivalent to -ly in English; constantly -> constantemente. Words ending in -ible and -able are also usually the same in Spanish.</p>
+                            <p class="text-sm text-gray-700">Key concept: "I want" in Spanish is "quiero." Words ending in -ion are the same in English in Spanish. Words ending in -tion turn into -ción (note: not all -tion words convert, but most -ation words do). Most or all -ación words can also convert to verbs,  to do this simply replace the -ación with -ar to get an unconjugated verb, for example: Concentration -> Concentración -> Concentrar, this final word means "to concentrate." To say "me" in Spainish, you simply say "mi," to say "myself" it''s "me."</p>
                         </div>
                         <div class="bg-red-50 border-l-4 border-red-400 p-4">
                             <p class="text-sm text-gray-700">
@@ -127,7 +137,7 @@
                         <div class="mb-8">
                             <div class="flex justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-700">Lesson Progress</span>
-                                <span class="text-sm font-medium text-indigo-600" id="progress-text">0/5 exercises</span>
+                                <span class="text-sm font-medium text-indigo-600" id="progress-text">0/6 exercises</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5">
                                 <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
@@ -144,23 +154,23 @@
                                     <div class="flex-grow w-full">
                                         <!-- Make this container flexible -->
                                         <h3 class="font-bold text-gray-800 mb-2">
-                                            How do you say "It is constant" in Spanish?
+                                            How do you say "I want confirmation" in Spanish?
                                         </h3>
                                         <p class="text-sm text-gray-600 mb-4">
                                             The pronoun for it isn't usually required in Spanish.
                                         </p>
                                         <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                A. Es Constantemente
+                                                A. Quiero confirmation
                                             </button>
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                B. Estoy Constant
-                                            </button>
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                C. Soy Constante
+                                                B. Quieres confirmación
                                             </button>
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
-                                                D. Es Constante
+                                                C. Quiero confirmación
+                                            </button>
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
+                                                D. Queremos confirmation
                                             </button>
                                         </div>
                                         <div class="flex justify-end">
@@ -182,17 +192,17 @@
                                     </div>
                                     <div class="w-full">
                                         <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
-                                        <p class="text-sm text-gray-600 mb-4">"Normally it's important."</p>
+                                        <p class="text-sm text-gray-600 mb-4">"He wants confirmation."</p>
                                         <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
                                             <p class="text-gray-800">
-                                                <span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                                El quiere<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
                                             </p>
                                         </div>
                                         <div class="flex items-center">
                                             <input type="text"
                                                    class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
-                                                   data-answer="normalmente es importante">
+                                                   data-answer="confirmación">
                                             <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
@@ -214,24 +224,24 @@
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="left" data-id="B">
                                                 <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">A</span>
-                                                <span>Usually</span>
+                                                <span>To generate</span>
                                             </div>
                                             <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="right" data-id="1">
                                                 <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">1</span>
-                                                <span>Legally</span>
+                                                <span>Generar</span>
                                             </div>
                                             <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="left" data-id="A">
                                                 <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">B</span>
-                                                <span>Legalmente</span>
+                                                <span>To concentrate</span>
                                             </div>
                                             <div class="match-item bg-white border border-gray-300 rounded-lg p-3 flex items-center cursor-pointer" data-group="right" data-id="2">
                                                 <span class="bg-gray-100 text-gray-800 rounded px-2 py-1 text-sm mr-3">2</span>
-                                                <span>Usualmenta</span>
+                                                <span>Concentración</span>
                                             </div>
                                         </div>
                                         <div class="mt-4">
                                             <button class="check-matches-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition"
-                                                    data-correct-left="A" data-correct-right="1">
+                                                    data-correct-left="B" data-correct-right="1">
                                                 Check Matches
                                             </button>
                                         </div>
@@ -248,17 +258,17 @@
                                     </div>
                                     <div class="w-full">
                                         <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
-                                        <p class="text-sm text-gray-600 mb-4">"Naturally it's original."</p>
+                                        <p class="text-sm text-gray-600 mb-4">"I don't want to complicate."</p>
                                         <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
                                             <p class="text-gray-800">
-                                                <span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                                Yo no<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
                                             </p>
                                         </div>
                                         <div class="flex items-center">
                                             <input type="text"
                                                    class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
-                                                   data-answer="naturalmente es original">
+                                                   data-answer="quiero complicar">
                                             <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
@@ -277,23 +287,23 @@
                                     <div class="flex-grow w-full">
                                         <!-- Make this container flexible -->
                                         <h3 class="font-bold text-gray-800 mb-2">
-                                            How do you say "Possibly it's original" in Spanish?
+                                            How do you say "I love you" in Spanish?
                                         </h3>
                                         <p class="text-sm text-gray-600 mb-4">
                                             Refer to the Key Concept notes for assistance.
                                         </p>
                                         <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                A. Posible Es Original
+                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
+                                                A. Te quiero
                                             </button>
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
-                                                B. Posiblemente Es Original
+                                                B. Te amo
                                             </button>
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                C. Posible Es Originalmente
+                                                C. Te amar
                                             </button>
                                             <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                D. Posiblementa Es Original
+                                                D. Tu quiero
                                             </button>
                                         </div>
                                         <div class="flex justify-end">
@@ -305,9 +315,37 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Exercise 6 - Fill in the Blank -->
+                        <div class="exercise-card exercise-6" data-complete="false">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
+                                <div class="flex items-start mb-4">
+                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <span class="font-bold">4</span>
+                                    </div>
+                                    <div class="w-full">
+                                        <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
+                                        <p class="text-sm text-gray-600 mb-4">"I want to incorporate myself." (hint: incorporation can be converted to the verb that means "to incorporate" in Spanish. The word for "myself" is then added after the verb with no spaces in-between) )</p>
+                                        <div class="bg-white border border-gray-300 rounded-lg p-4 mb-4">
+                                            <p class="text-gray-800">
+                                                Yo quiero<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="text"
+                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   placeholder="Type your answer"
+                                                   data-answer="incorporarme">
+                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Exercise Navigation -->
                         <div class="flex justify-between px-4 py-4">
-                            <a href="lesson2.html">
+                            <a href="lesson3.html">
                                 <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition">
                                     <i class="fas fa-arrow-left mr-2"></i> Previous
                                 </button>
@@ -405,14 +443,27 @@
             // FILL IN THE BLANK
             if (fillInput && submitFillBtn) {
                 submitFillBtn.addEventListener('click', () => {
-                    const userAnswer = fillInput.value.trim().toLowerCase();
-                    const correctAnswer = fillInput.dataset.answer.trim().toLowerCase();
+                    const userAnswer = fillInput.value.trim();
+                    const correctAnswer = fillInput.dataset.answer.trim();
 
-                    fillInput.classList.remove('border-green-500', 'bg-green-100', 'border-red-500', 'bg-red-100');
+                    // Helper: removes accents from letters (diacritics)
+                    const normalize = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-                    if (userAnswer === correctAnswer) {
+                    fillInput.classList.remove(
+                        'border-green-500', 'bg-green-100',
+                        'border-red-500', 'bg-red-100',
+                        'border-yellow-500', 'bg-yellow-100'
+                    );
+
+                    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                        // Exact match
                         fillInput.classList.add('border-green-500', 'bg-green-100');
+                    } else if (normalize(userAnswer.toLowerCase()) === normalize(correctAnswer.toLowerCase())) {
+                        // Match when ignoring accents
+                        fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+                        fillInput.value = correctAnswer; // Replace with fully accented version
                     } else {
+                        // Incorrect
                         fillInput.classList.add('border-red-500', 'bg-red-100');
                         fillInput.value = correctAnswer;
                     }
@@ -424,6 +475,7 @@
                     updateProgress();
                 });
             }
+
 
             // MATCHING
             if (matchBtn && leftItems.length && rightItems.length) {
@@ -491,7 +543,7 @@
         }
 
         function updateProgress() {
-            const total = 5; // Change this to match your total exercises
+            const total = 6; // Change this to match your total exercises
             const completed = Array.from(document.querySelectorAll('.exercise-card'))
                 .filter(card => card.parentElement.closest('.exercise-card') === null && card.dataset.complete === "true")
                 .length;
@@ -510,7 +562,7 @@
                 nextBtn.disabled = false;
                 nextBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
                 nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
-                nextBtn.onclick = () => window.location.href = 'lesson4.html';
+                nextBtn.onclick = () => window.location.href = 'lesson5.html';
             }
         }
 
