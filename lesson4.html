@@ -47,10 +47,18 @@
 <body class="bg-gray-50 font-sans">
     <!-- Header -->
     <header class="bg-indigo-600 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Icon placeholder -->
+                <link rel="icon" type="image/png" href="https://i.imgur.com/lzzXPzJ.png">
+                <img src="https://i.imgur.com/lzzXPzJ.png" alt="Logo" class="h-14 w-14 rounded">
                 <h1 class="text-2xl font-bold">Spanish Visual Addon for Language Transfer</h1>
             </div>
+            <nav class="flex space-x-4 text-lg">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="credits.html" class="hover:underline">Credits</a>
+            </nav>
         </div>
     </header>
 
@@ -76,7 +84,7 @@
                     <div class="mb-6">
                         <h3 class="font-bold text-gray-800 mb-2">Lesson Notes</h3>
                         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                            <p class="text-sm text-gray-700">Key concept: "I want" in Spanish is "quiero." Words ending in -ion are the same in English in Spanish. Words ending in -tion turn into -ción (note: not all -tion words convert, but most -ation words do). Most or all -ación words can also convert to verbs,  to do this simply replace the -ación with -ar to get an unconjugated verb, for example: Concentration -> Concentración -> Concentrar, this final word means "to concentrate." To say "me" in Spainish, you simply say "mi," to say "myself" it''s "me."</p>
+                            <p class="text-sm text-gray-700">Key concept: English and Spanish share some similarities—certain types of English words convert over to Spanish. All or most words in English ending in -al convert over to Spanish. </p>
                         </div>
                         <div class="bg-red-50 border-l-4 border-red-400 p-4">
                             <p class="text-sm text-gray-700">
@@ -87,6 +95,14 @@
                                 O – “oh” (like more)<br>
                                 U – “oo” (like tune)
                             </p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                                <h3 class="font-bold text-blue-800 mb-2 flex items-center">
+                                    <i class="fas fa-headphones mr-2"></i> Audio First
+                                </h3>
+                                <p class="text-sm text-gray-700">Listen to the audio thoroughly. Ensure that you pause each time before Mihalis expects an answer from the student.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -113,15 +129,6 @@
                             <i class="fas fa-external-link-alt mr-2"></i>
                             View Full Transcript
                         </a>
-
-                        <div class="mt-6 grid grid-cols-1 md:grid-cols-1 gap-4">
-                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                                <h3 class="font-bold text-blue-800 mb-2 flex items-center">
-                                    <i class="fas fa-headphones mr-2"></i> Audio First
-                                </h3>
-                                <p class="text-sm text-gray-700">Listen to the audio thoroughly. Ensure that you pause each time before Mihalis expects an answer from the student.</p>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -198,12 +205,12 @@
                                                 El quiere<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
                                             </p>
                                         </div>
-                                        <div class="flex items-center">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                                             <input type="text"
-                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
-                                                   data-answer="confirmación">
-                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                   data-answer="es natural">
+                                            <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
                                         </div>
@@ -264,12 +271,12 @@
                                                 Yo no<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
                                             </p>
                                         </div>
-                                        <div class="flex items-center">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                                             <input type="text"
-                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
-                                                   data-answer="quiero complicar">
-                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                   data-answer="es natural">
+                                            <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
                                         </div>
@@ -330,12 +337,12 @@
                                                 Yo quiero<span class="inline-block w-24 border-b-2 border-gray-300 mx-1"></span>.
                                             </p>
                                         </div>
-                                        <div class="flex items-center">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                                             <input type="text"
-                                                   class="fill-input flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                                                   class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
-                                                   data-answer="incorporarme">
-                                            <button class="submit-fill-btn ml-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                                                   data-answer="es natural">
+                                            <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
                                         </div>
@@ -366,14 +373,14 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between">
                 <div class="mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-4">Spanish Visual Companion</h3>
+                    <h3 class="text-xl font-bold mb-4">VAFLaT</h3>
                     <p class="text-gray-400 max-w-md">
-                        A visual supplement to the Language Transfer audio course. This is not an official Language Transfer product.
+                        This is not an official Language Transfer product.
                     </p>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                <p class="mt-2">Language Transfer audio used with educational intent.</p>
+            <div class="text-gray-400 max-w-md">
+                <p class="mt-2">Coded with the aid of AI.</p>
             </div>
         </div>
     </footer>
@@ -426,12 +433,15 @@
                     });
 
                     // Explicitly highlight the correct button in *this card only*
-                    const correctBtn = [...answerButtons].find(btn => btn.dataset.correct === 'true');
-                    if (correctBtn && correctBtn !== selected) {
-                        correctBtn.classList.add('bg-green-100', 'border-green-500');
-                        answerButtons.forEach(btn => btn.disabled = true);
-                        checkBtn.disabled = true;
-                    }
+                    const correctBtns = [...answerButtons].filter(btn => btn.dataset.correct === 'true');
+
+                    correctBtns.forEach(btn => {
+                        btn.classList.add('bg-green-100', 'border-green-500');
+                    });
+
+                    answerButtons.forEach(btn => btn.disabled = true);
+                    checkBtn.disabled = true;
+
 
 
                     card.dataset.complete = "true";
@@ -441,49 +451,49 @@
             }
 
             // FILL IN THE BLANK
-if (fillInput && submitFillBtn) {
-    submitFillBtn.addEventListener('click', () => {
-        const userAnswer = fillInput.value.trim();
-        const correctAnswer = fillInput.dataset.answer.trim();
+            if (fillInput && submitFillBtn) {
+                submitFillBtn.addEventListener('click', () => {
+                    const userAnswer = fillInput.value.trim();
+                    const correctAnswer = fillInput.dataset.answer.trim();
 
-        const lowerUser = userAnswer.toLowerCase();
-        const lowerCorrect = correctAnswer.toLowerCase();
+                    const lowerUser = userAnswer.toLowerCase();
+                    const lowerCorrect = correctAnswer.toLowerCase();
 
-        const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const removeSpaces = str => str.replace(/\s+/g, "");
+                    const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const removeSpaces = str => str.replace(/\s+/g, "");
 
-        fillInput.classList.remove(
-            'border-green-500', 'bg-green-100',
-            'border-red-500', 'bg-red-100',
-            'border-yellow-500', 'bg-yellow-100'
-        );
+                    fillInput.classList.remove(
+                        'border-green-500', 'bg-green-100',
+                        'border-red-500', 'bg-red-100',
+                        'border-yellow-500', 'bg-yellow-100'
+                    );
 
-        if (lowerUser === lowerCorrect) {
-            // Exact match
-            fillInput.classList.add('border-green-500', 'bg-green-100');
-        } else if (removeAccents(lowerUser) === removeAccents(lowerCorrect)) {
-            // Match ignoring accents only
-            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
-            fillInput.value = correctAnswer;
-        } else if (
-            removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(lowerCorrect))
-        ) {
-            // Match ignoring accents AND spaces
-            fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
-            fillInput.value = correctAnswer;
-        } else {
-            // Incorrect
-            fillInput.classList.add('border-red-500', 'bg-red-100');
-            fillInput.value = correctAnswer;
-        }
+                    if (lowerUser === lowerCorrect) {
+                        // Exact match
+                        fillInput.classList.add('border-green-500', 'bg-green-100');
+                    } else if (removeAccents(lowerUser) === removeAccents(lowerCorrect)) {
+                        // Match ignoring accents only
+                        fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+                        fillInput.value = correctAnswer;
+                    } else if (
+                        removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(lowerCorrect))
+                    ) {
+                        // Match ignoring accents AND spaces
+                        fillInput.classList.add('border-yellow-500', 'bg-yellow-100');
+                        fillInput.value = correctAnswer;
+                    } else {
+                        // Incorrect
+                        fillInput.classList.add('border-red-500', 'bg-red-100');
+                        fillInput.value = correctAnswer;
+                    }
 
-        fillInput.disabled = true;
-        submitFillBtn.disabled = true;
+                    fillInput.disabled = true;
+                    submitFillBtn.disabled = true;
 
-        card.dataset.complete = "true";
-        updateProgress();
-    });
-}
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+            }
 
             // MATCHING
             if (matchBtn && leftItems.length && rightItems.length) {

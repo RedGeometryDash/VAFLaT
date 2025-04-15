@@ -31,10 +31,18 @@
 <body class="bg-indigo-50">
     <!-- Header -->
     <header class="bg-indigo-600 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Icon placeholder -->
+                <link rel="icon" type="image/png" href="https://i.imgur.com/lzzXPzJ.png">
+                <img src="https://i.imgur.com/lzzXPzJ.png" alt="Logo" class="h-14 w-14 rounded">
                 <h1 class="text-2xl font-bold">Spanish Visual Addon for Language Transfer</h1>
             </div>
+            <nav class="flex space-x-4 text-lg">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="credits.html" class="hover:underline">Credits</a>
+            </nav>
         </div>
     </header>
 
@@ -44,17 +52,21 @@
         <section class="bg-indigo-700 text-white rounded-lg p-8 mb-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Learn Spanish Quickly and With Minimal Effort!</h2>
             <p class="text-xl mb-6">Spanish Visual Addon for Language Transfer</p>
-            <a href="lesson1.html">
-                <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
-                    Start The First Lesson
-                </button>
-            </a>
-            <a id="resume-link" href="lesson1.html" style="display: none;">
-                <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
-                    Resume From Last Checkpoint
-                </button>
-            </a>
+
+            <div class="flex flex-col items-center space-y-3 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="lesson1.html">
+                    <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
+                        Start The First Lesson
+                    </button>
+                </a>
+                <a id="resume-link" href="lesson1.html" style="display: none;">
+                    <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
+                        Resume From Last Checkpoint
+                    </button>
+                </a>
+            </div>
         </section>
+
 
         <!-- Features -->
         <section class="mb-12">
@@ -78,18 +90,34 @@
         <!-- CTA -->
         <section class="bg-indigo-100 p-8 rounded-lg text-center">
             <h2 class="text-2xl font-bold text-indigo-800 mb-4">Want to donate or try out the original?</h2>
-            <button onclick="window.location.href='https://www.languagetransfer.org/donations'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
-                Donate to Language Transfer
-            </button>
-            <button onclick="window.location.href='https://www.languagetransfer.org/'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
-                Try the Original
-            </button>
+            <div class="flex flex-col items-center space-y-3 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <button onclick="window.location.href='https://www.languagetransfer.org/donations'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
+                    Donate to Language Transfer
+                </button>
+                <button onclick="window.location.href='https://www.languagetransfer.org/'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
+                    Try the Original
+                </button>
+            </div>
         </section>
+
     </main>
 
+
     <!-- Footer -->
-    <footer class="bg-indigo-900 text-white p-4 text-center">
-        <p>All audio taken from https://www.languagetransfer.org/</p>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">VAFLaT</h3>
+                    <p class="text-gray-400 max-w-md">
+                        This is not an official Language Transfer product.
+                    </p>
+                </div>
+            </div>
+            <div class="text-gray-400 max-w-md">
+                <p class="mt-2">Coded with the aid of AI.</p>
+            </div>
+        </div>
     </footer>
     <script>
         const resumeLink = document.getElementById('resume-link');
