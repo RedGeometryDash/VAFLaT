@@ -213,6 +213,15 @@
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
+                                            <div class="hidden sm:flex flex-wrap gap-2 mt-3">
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="á">á</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="é">é</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="í">í</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ó">ó</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ú">ú</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ñ">ñ</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ü">ü</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -279,6 +288,15 @@
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
+                                            <div class="hidden sm:flex flex-wrap gap-2 mt-3">
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="á">á</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="é">é</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="í">í</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ó">ó</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ú">ú</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ñ">ñ</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ü">ü</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -345,6 +363,15 @@
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
+                                            <div class="hidden sm:flex flex-wrap gap-2 mt-3">
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="á">á</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="é">é</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="í">í</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ó">ó</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ú">ú</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ñ">ñ</button>
+                                                <button type="button" class="accent-btn bg-indigo-600 text-white px-3 py-1 rounded-lg font-medium hover:bg-indigo-700 transition" data-char="ü">ü</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -600,7 +627,22 @@
             }
         }
     </script>
-
-
+    <script>
+        document.querySelectorAll('.accent-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.exercise-card');
+                const input = card.querySelector('input[type="text"]');
+                const char = button.getAttribute('data-char');
+    
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const currentValue = input.value;
+    
+                input.value = currentValue.slice(0, start) + char + currentValue.slice(end);
+                input.focus();
+                input.selectionStart = input.selectionEnd = start + 1;
+            });
+        });
+    </script>
 </body>
 </html>
