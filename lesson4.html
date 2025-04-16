@@ -42,6 +42,9 @@
         .audio-wave:nth-child(5) {
             animation-delay: 0.8s;
         }
+        .accent-btn {
+        @apply px-2 py-1 bg-gray-200 rounded text-gray-800 hover:bg-gray-300 transition;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -210,6 +213,15 @@
                                                    class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
                                                    data-answer="confirmación">
+                                                   <div class="accent-buttons flex flex-wrap gap-2 mt-2">
+                                                    <button type="button" class="accent-btn" data-char="á">á</button>
+                                                    <button type="button" class="accent-btn" data-char="é">é</button>
+                                                    <button type="button" class="accent-btn" data-char="í">í</button>
+                                                    <button type="button" class="accent-btn" data-char="ó">ó</button>
+                                                    <button type="button" class="accent-btn" data-char="ú">ú</button>
+                                                    <button type="button" class="accent-btn" data-char="ñ">ñ</button>
+                                                    <button type="button" class="accent-btn" data-char="ü">ü</button>
+                                                </div>                                                
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
@@ -276,6 +288,15 @@
                                                    class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
                                                    data-answer="quiero complicar">
+                                                   <div class="accent-buttons flex flex-wrap gap-2 mt-2">
+                                                    <button type="button" class="accent-btn" data-char="á">á</button>
+                                                    <button type="button" class="accent-btn" data-char="é">é</button>
+                                                    <button type="button" class="accent-btn" data-char="í">í</button>
+                                                    <button type="button" class="accent-btn" data-char="ó">ó</button>
+                                                    <button type="button" class="accent-btn" data-char="ú">ú</button>
+                                                    <button type="button" class="accent-btn" data-char="ñ">ñ</button>
+                                                    <button type="button" class="accent-btn" data-char="ü">ü</button>
+                                                </div>                                                
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
@@ -342,6 +363,15 @@
                                                    class="fill-input w-full sm:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                                                    placeholder="Type your answer"
                                                    data-answer="incorporarme">
+                                                   <div class="accent-buttons flex flex-wrap gap-2 mt-2">
+                                                    <button type="button" class="accent-btn" data-char="á">á</button>
+                                                    <button type="button" class="accent-btn" data-char="é">é</button>
+                                                    <button type="button" class="accent-btn" data-char="í">í</button>
+                                                    <button type="button" class="accent-btn" data-char="ó">ó</button>
+                                                    <button type="button" class="accent-btn" data-char="ú">ú</button>
+                                                    <button type="button" class="accent-btn" data-char="ñ">ñ</button>
+                                                    <button type="button" class="accent-btn" data-char="ü">ü</button>
+                                                </div>                                                
                                             <button class="submit-fill-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
                                                 Submit
                                             </button>
@@ -598,7 +628,20 @@
             }
         }
     </script>
-
-
+    <script>
+        document.querySelectorAll('.accent-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = btn.closest('.exercise-card').querySelector('input[type="text"]');
+                const char = btn.getAttribute('data-char');
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const text = input.value;
+    
+                input.value = text.slice(0, start) + char + text.slice(end);
+                input.focus();
+                input.selectionStart = input.selectionEnd = start + 1;
+            });
+        });
+    </script>    
 </body>
 </html>
