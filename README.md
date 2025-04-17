@@ -1,5 +1,3 @@
-Slop project :3
-
 This is a school project I'm making.
 
 This isn't fully coded by me. This is mainly coded with the aid of DeepSite and ChatGPT.
