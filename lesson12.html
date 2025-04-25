@@ -149,7 +149,7 @@
                         <div class="mb-8">
                             <div class="flex justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-700">Lesson Progress</span>
-                                <span class="text-sm font-medium text-indigo-600" id="progress-text">0/8 exercises</span>
+                                <span class="text-sm font-medium text-indigo-600" id="progress-text">0/7 exercises</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5">
                                 <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
@@ -307,50 +307,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Exercise 5 - Multiple Choice -->
+                        <!-- Exercise 5 - Fill in the Blank -->
                         <div class="exercise-card exercise-5" data-complete="false">
                             <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
                                 <div class="flex items-start mb-4">
                                     <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
                                         <span class="font-bold">5</span>
-                                    </div>
-                                    <div class="flex-grow w-full">
-                                        <!-- Make this container flexible -->
-                                        <h3 class="font-bold text-gray-800 mb-2">
-                                            How do you say "I want to see him" in Spanish?
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-4">
-                                            Refer to the Key Concept notes for assistance.
-                                        </p>
-                                        <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                A. Quiero verla
-                                            </button>
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                B. Quiero verlos
-                                            </button>
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition">
-                                                C. Quiero verlas
-                                            </button>
-                                            <button class="answer-btn w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-left hover:bg-gray-100 transition" data-correct="true">
-                                                D. Lo quiero ver
-                                            </button>
-                                        </div>
-                                        <div class="flex justify-end">
-                                            <button class="check-btn bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
-                                                Check Answer
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Exercise 6 - Fill in the Blank -->
-                        <div class="exercise-card exercise-6" data-complete="false">
-                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
-                                <div class="flex items-start mb-4">
-                                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                        <span class="font-bold">6</span>
                                     </div>
                                     <div class="w-full">
                                         <h3 class="font-bold text-gray-800 mb-2">Complete the sentence:</h3>
@@ -382,12 +344,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Exercise 7 - Multiple Choice -->
-                        <div class="exercise-card exercise-7" data-complete="false">
+                        <!-- Exercise 6 - Multiple Choice -->
+                        <div class="exercise-card exercise-6" data-complete="false">
                             <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
                                 <div class="flex items-start mb-4">
                                     <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                        <span class="font-bold">7</span>
+                                        <span class="font-bold">6</span>
                                     </div>
                                     <div class="flex-grow w-full">
                                         <!-- Make this container flexible -->
@@ -420,12 +382,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Exercise 8 - Multiple Choice -->
-                        <div class="exercise-card exercise-8" data-complete="false">
+                        <!-- Exercise 7 - Multiple Choice -->
+                        <div class="exercise-card exercise-7" data-complete="false">
                             <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 transition-all duration-200 ease-in-out">
                                 <div class="flex items-start mb-4">
                                     <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                        <span class="font-bold">8</span>
+                                        <span class="font-bold">7</span>
                                     </div>
                                     <div class="flex-grow w-full">
                                         <!-- Make this container flexible -->
@@ -668,7 +630,7 @@
         }
 
         function updateProgress() {
-            const total = 8; // Change this to match your total exercises
+            const total = 7; // Change this to match your total exercises
             const completed = Array.from(document.querySelectorAll('.exercise-card'))
                 .filter(card => card.parentElement.closest('.exercise-card') === null && card.dataset.complete === "true")
                 .length;
