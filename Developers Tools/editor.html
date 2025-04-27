@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VAFLaT Lesson Editor</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>VAFLaT Lesson Editor</h1>
+
+    <div class="section">
+        <input type="file" id="fileInput">
+        <button onclick="loadFile()">Load HTML</button>
+    </div>
+
+    <div class="section">
+        <h2>Edit Lesson Info</h2>
+
+        <label for="lessonNumber">Lesson Number</label>
+        <input type="text" id="lessonNumber">
+
+        <label for="trackNumber">SoundCloud Track Number</label>
+        <input type="text" id="trackNumber">
+
+        <label for="keyConcept">Key Concept Text</label>
+        <input type="text" id="keyConcept">
+
+        <label for="progressNumber">Total Exercises for Progress</label>
+        <input type="text" id="progressNumber">
+
+        <label for="previousLessonNumber">Previous Lesson</label>
+        <input type="text" id="previousLessonNumber">
+
+        <label for="totalExercises">Total Exercises</label>
+        <input type="text" id="totalExercises">
+
+        <label for="nextLessonNumber">Next Lesson</label>
+        <input type="text" id="nextLessonNumber">
+    </div>
+
+    <div class="section">
+        <label for="middleSection">Exercises</label>
+        <textarea id="middleSection" rows="35"></textarea>
+    </div>
+
+    <div class="section">
+        <button onclick="saveFile()">Export HTML</button>
+    </div>
+
+    <script>
+        let fileContent = '';
+        let lines = [];
+        let totalLines = 0;
+
+        function loadFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                fileContent = e.target.result;
+                lines = fileContent.split("\n");
+                totalLines = lines.length;
+
+                // Line 79 (index 78)
+                const line79 = lines[78] || '';
+                const lessonMatch = line79.match(/Lesson (\d+) of/);
+                document.getElementById('lessonNumber').value = lessonMatch ? lessonMatch[1] : '';
+
+                // Line 85 (index 84)
+                const line85 = lines[84] || '';
+                const trackMatch = line85.match(/track-(\d+)-language/);
+                document.getElementById('trackNumber').value = trackMatch ? trackMatch[1] : '';
+
+                // Line 92 (index 91)
+                const line92 = lines[91] || '';
+                const conceptMatch = line92.match(/Key concept: (.*?)<\/p>/);
+                document.getElementById('keyConcept').value = conceptMatch ? conceptMatch[1] : '';
+
+                // Line 152 (index 151)
+                const line152 = lines[151] || '';
+                const progressMatch = line152.match(/progress-text">0\/(\d+) exercises/);
+                document.getElementById('progressNumber').value = progressMatch ? progressMatch[1] : '';
+
+                // Line 265 from bottom
+                const lineRel265 = lines[totalLines - 265] || '';
+                const previousLessonMatch = lineRel265.match(/lesson(\d+)\.html/);
+                document.getElementById('previousLessonNumber').value = previousLessonMatch ? previousLessonMatch[1] : '';
+
+                // Line 57 from bottom
+                const lineRel57 = lines[totalLines - 57] || '';
+                const totalExercisesMatch = lineRel57.match(/const total = (\d+);/);
+                document.getElementById('totalExercises').value = totalExercisesMatch ? totalExercisesMatch[1] : '';
+
+                // Line 38 from bottom
+                const lineRel38 = lines[totalLines - 38] || '';
+                const nextLessonMatch = lineRel38.match(/lesson(\d+)\.html/);
+                document.getElementById('nextLessonNumber').value = nextLessonMatch ? nextLessonMatch[1] : '';
+
+                // Middle section lines (158 - 267 from top)
+                let middleSection = '';
+                for (let i = 157; i < totalLines - 267; i++) {
+                    if (lines[i]) middleSection += lines[i] + "\n";
+                }
+                document.getElementById('middleSection').value = middleSection;
+            };
+            reader.readAsText(file);
+        }
+
+        function saveFile() {
+            // Rebuild the lines with new values
+            const lessonNumber = document.getElementById('lessonNumber').value;
+            const trackNumber = document.getElementById('trackNumber').value;
+            const keyConcept = document.getElementById('keyConcept').value;
+            const progressNumber = document.getElementById('progressNumber').value;
+            const previousLessonNumber = document.getElementById('previousLessonNumber').value;
+            const totalExercises = document.getElementById('totalExercises').value;
+            const nextLessonNumber = document.getElementById('nextLessonNumber').value;
+            const middleSection = document.getElementById('middleSection').value.split("\n");
+
+            // Update lines for specific sections
+            if (lines[78]) {
+                lines[78] = `<span class="text-sm font-medium text-indigo-600">Lesson ${lessonNumber} of 90</span>`;
+            }
+            if (lines[84]) {
+                lines[84] = `src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/complete-spanish-track-${trackNumber}-language-transfer-the-thinking-method&color=%234f46e5&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">`;
+            }
+            if (lines[91]) {
+                lines[91] = `<p class="text-sm text-gray-700">Key concept: ${keyConcept}</p>`;
+            }
+            if (lines[151]) {
+                lines[151] = `<span class="text-sm font-medium text-indigo-600" id="progress-text">0/${progressNumber} exercises</span>`;
+            }
+            if (lines[totalLines - 265]) {
+                lines[totalLines - 265] = `<a href="lesson${previousLessonNumber}.html">`;
+            }
+            if (lines[totalLines - 57]) {
+                lines[totalLines - 57] = `const total = ${totalExercises}; // Change this to match your total exercises`;
+            }
+            if (lines[totalLines - 38]) {
+                lines[totalLines - 38] = `nextBtn.onclick = () => window.location.href = 'lesson${nextLessonNumber}.html';`;
+            }
+
+            // Remove the old middle section (lines 158-267 from the top)
+            const startLine = 157; // Index 157 corresponds to line 158
+            const endLine = totalLines - 267; // Line 267 is totalLines - 267
+            lines.splice(startLine, endLine - startLine + 1);
+
+            // Insert the new middle section content
+            lines.splice(startLine, 0, ...middleSection);
+
+            // Rebuild the updated content
+            const updatedContent = lines.join("\n");
+            const blob = new Blob([updatedContent], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'lesson.html';
+            link.click();
+        }
+    </script>
+</body>
+</html>

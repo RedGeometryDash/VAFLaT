@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Editor</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #editSection, #middleSection {
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="editSection">
+        <h1>VAFLaT Lesson Editor</h1>
+
+        <!-- File Import -->
+        <input type="file" id="fileInput">
+        <button onclick="loadFile()">Load HTML</button>
+
+        <!-- Editable Content -->
+        <div>
+            <h3>Edit Specific Lines</h3>
+
+            <label for="line79">Lesson Number</label>
+            <textarea id="line79" rows="4" placeholder="Lesson Number">&lt;span class="text-sm font-medium text-indigo-600"&gt;Lesson 69 of 90&lt;/span&gt;</textarea>
+
+            <label for="line85">Lesson Link</label>
+            <textarea id="line85" rows="4" placeholder="Lesson Link">src="https://
+w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/
+complete-spanish-track-69-language-transfer-the-thinking-
+method&amp;color=%234f46e5&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false"&gt;</textarea>
+
+            <label for="line92">Key Concepts</label>
+            <textarea id="line92" rows="4" placeholder="Key Concepts">&lt;p class="text-sm text-gray-700"&gt;Key concept: 69&lt;/p&gt;</textarea>
+
+            <label for="line152">Total Exercise Counter</label>
+            <textarea id="line152" rows="4" placeholder="Total Exercise Counter">&lt;span class="text-sm font-medium text-indigo-600" id="progress-text"&gt;0/69 exercises&lt;/span&gt;</textarea>
+
+            <label for="lineRel265">Previous Lesson</label>
+            <textarea id="lineRel265" rows="4" placeholder="Previous Lesson">&lt;a href="lesson69.html"&gt;</textarea>
+
+            <label for="lineRel57">Total Exercise Value</label>
+            <textarea id="lineRel57" rows="4" placeholder="Total Exercise Value">const total = 69; // Change this to match your total exercises</textarea>
+
+            <label for="lineRel38">Next Lesson</label>
+            <textarea id="lineRel38" rows="4" placeholder="Next Lesson">nextBtn.onclick = () =&gt; window.location.href = 'lesson69.html';</textarea>
+        </div>
+
+        <!-- Export Button -->
+        <button onclick="saveFile()">Export HTML</button>
+    </div>
+
+    <div id="middleSection">
+        <label for="middleLines">Exercises</label>
+        <textarea id="middleLines" rows="30"></textarea>
+    </div>
+
+    <script>
+        let fileContent = '';
+        let lines = [];
+        let startMiddle = 0;
+        let endMiddle = 0;
+
+        function loadFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                fileContent = e.target.result;
+                lines = fileContent.split("\n");
+                const totalLines = lines.length;
+
+                // Extract lines by index (0-indexed)
+                document.getElementById('line79').value = lines[78] || '';
+                document.getElementById('line85').value = lines[84] || '';
+                document.getElementById('line92').value = lines[91] || '';
+                document.getElementById('line152').value = lines[151] || '';
+
+                // Extract lines relative to the bottom
+                document.getElementById('lineRel265').value = lines[totalLines - 265] || '';
+                document.getElementById('lineRel57').value = lines[totalLines - 57] || '';
+                document.getElementById('lineRel38').value = lines[totalLines - 38] || '';
+
+                // Save start and end for middle editing
+                startMiddle = 157; // line 158 (index 157)
+                endMiddle = totalLines - 267 - 1; // one before 267-from-bottom
+
+                const middleContent = lines.slice(startMiddle, endMiddle + 1).join("\n");
+                document.getElementById('middleLines').value = middleContent;
+            };
+            reader.readAsText(file);
+        }
+
+        function saveFile() {
+            const totalLines = lines.length;
+
+            // Update lines by index (0-indexed)
+            lines[78] = document.getElementById('line79').value;
+            lines[84] = document.getElementById('line85').value;
+            lines[91] = document.getElementById('line92').value;
+            lines[151] = document.getElementById('line152').value;
+
+            // Update lines relative to the bottom
+            lines[totalLines - 265] = document.getElementById('lineRel265').value;
+            lines[totalLines - 57] = document.getElementById('lineRel57').value;
+            lines[totalLines - 38] = document.getElementById('lineRel38').value;
+
+            // Update middle section
+            const middleLines = document.getElementById('middleLines').value.split("\n");
+            for (let i = 0; i < middleLines.length; i++) {
+                if (startMiddle + i <= endMiddle) {
+                    lines[startMiddle + i] = middleLines[i];
+                }
+            }
+
+            const updatedContent = lines.join("\n");
+            const blob = new Blob([updatedContent], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'lesson.html';
+            link.click();
+        }
+    </script>
+
+
+</body></html>
