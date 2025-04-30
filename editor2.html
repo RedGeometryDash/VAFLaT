@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAFLaT Lesson Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .audio-wave {
+            animation: audioWave 1.5s infinite ease-in-out;
+        }
+
+        @keyframes audioWave {
+            0%, 100% {
+                height: 20px;
+            }
+
+            50% {
+                height: 10px;
+            }
+        }
+
+        .audio-wave:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .audio-wave:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .audio-wave:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .audio-wave:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.imgur.com/Q7IhMjo.gif"
+                     alt="Logo"
+                     class="h-14 w-14 rounded"
+                     style="image-rendering: smooth;"
+                     onmouseover="this.src='https://i.imgur.com/rHGRmKj.gif';"
+                     onmouseout="this.src='https://i.imgur.com/Q7IhMjo.gif';" />
+                <h1 class="text-2xl font-bold hidden sm:block">VAFLaT Lesson Editor</h1>
+            </div>
+            <nav class="flex space-x-4 text-lg">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="credits.html" class="hover:underline">Credits</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col gap-8">
+            <!-- File Load Section -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Load Lesson File</h2>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <input type="file" id="fileInput" class="block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2 file:px-4
+                            file:rounded-lg file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-indigo-50 file:text-indigo-700
+                            hover:file:bg-indigo-100">
+                        <button onclick="loadFile()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition whitespace-nowrap">
+                            <i class="fas fa-file-import mr-2"></i> Load HTML
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Lesson Info Section -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6">Edit Lesson Info</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="lessonNumber" class="block text-sm font-medium text-gray-700 mb-1">Lesson Number</label>
+                            <input type="text" id="lessonNumber" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div>
+                            <label for="trackNumber" class="block text-sm font-medium text-gray-700 mb-1">SoundCloud Track Number</label>
+                            <input type="text" id="trackNumber" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label for="keyConcept" class="block text-sm font-medium text-gray-700 mb-1">Key Concept Text</label>
+                            <input type="text" id="keyConcept" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div>
+                            <label for="progressNumber" class="block text-sm font-medium text-gray-700 mb-1">Total Exercises for Progress</label>
+                            <input type="text" id="progressNumber" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div>
+                            <label for="totalExercises" class="block text-sm font-medium text-gray-700 mb-1">Total Exercises</label>
+                            <input type="text" id="totalExercises" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div>
+                            <label for="previousLessonNumber" class="block text-sm font-medium text-gray-700 mb-1">Previous Lesson</label>
+                            <input type="text" id="previousLessonNumber" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+
+                        <div>
+                            <label for="nextLessonNumber" class="block text-sm font-medium text-gray-700 mb-1">Next Lesson</label>
+                            <input type="text" id="nextLessonNumber" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercises Section -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Edit Exercises</h2>
+                    <label for="middleSection" class="block text-sm font-medium text-gray-700 mb-2">Exercises HTML</label>
+                    <textarea id="middleSection" rows="35" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 font-mono text-xs"></textarea>
+                </div>
+            </div>
+
+            <!-- Export Button -->
+            <div class="flex justify-center">
+                <button onclick="saveFile()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition text-lg">
+                    <i class="fas fa-file-export mr-2"></i> Export HTML
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">VAFLaT Editor</h3>
+                    <p class="text-gray-400 max-w-md">
+                        This is not an official Language Transfer product.
+                    </p>
+                    <p class="text-gray-400 max-w-md mt-2">Coded with the aid of AI.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>let fileContent = '';
+        let lines = [];
+        let totalLines = 0;
+
+        function loadFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                fileContent = e.target.result;
+                lines = fileContent.split("\n");
+                totalLines = lines.length;
+
+                // Line 79 (index 78)
+                const line79 = lines[78] || '';
+                const lessonMatch = line79.match(/Lesson (\d+) of/);
+                document.getElementById('lessonNumber').value = lessonMatch ? lessonMatch[1] : '';
+
+                // Line 85 (index 84)
+                const line85 = lines[84] || '';
+                const trackMatch = line85.match(/track-(\d+)-language/);
+                document.getElementById('trackNumber').value = trackMatch ? trackMatch[1] : '';
+
+                // Line 92 (index 91)
+                const line92 = lines[91] || '';
+                const conceptMatch = line92.match(/Key concept: (.*?)<\/p>/);
+                document.getElementById('keyConcept').value = conceptMatch ? conceptMatch[1] : '';
+
+                // Line 152 (index 151)
+                const line152 = lines[151] || '';
+                const progressMatch = line152.match(/progress-text">0\/(\d+) exercises/);
+                document.getElementById('progressNumber').value = progressMatch ? progressMatch[1] : '';
+
+                // Line 265 from bottom
+                const lineRel265 = lines[totalLines - 265] || '';
+                const previousLessonMatch = lineRel265.match(/lesson(\d+)\.html/);
+                document.getElementById('previousLessonNumber').value = previousLessonMatch ? previousLessonMatch[1] : '';
+
+                // Line 57 from bottom
+                const lineRel57 = lines[totalLines - 57] || '';
+                const totalExercisesMatch = lineRel57.match(/const total = (\d+);/);
+                document.getElementById('totalExercises').value = totalExercisesMatch ? totalExercisesMatch[1] : '';
+
+                // Line 38 from bottom
+                const lineRel38 = lines[totalLines - 38] || '';
+                const nextLessonMatch = lineRel38.match(/lesson(\d+)\.html/);
+                document.getElementById('nextLessonNumber').value = nextLessonMatch ? nextLessonMatch[1] : '';
+
+                // Middle section lines (158 - 267 from top)
+                let middleSection = '';
+                for (let i = 157; i < totalLines - 267; i++) {
+                    if (lines[i]) middleSection += lines[i] + "\n";
+                }
+                document.getElementById('middleSection').value = middleSection;
+            };
+            reader.readAsText(file);
+        }
+
+        function saveFile() {
+            // Rebuild the lines with new values
+            const lessonNumber = document.getElementById('lessonNumber').value;
+            const trackNumber = document.getElementById('trackNumber').value;
+            const keyConcept = document.getElementById('keyConcept').value;
+            const progressNumber = document.getElementById('progressNumber').value;
+            const previousLessonNumber = document.getElementById('previousLessonNumber').value;
+            const totalExercises = document.getElementById('totalExercises').value;
+            const nextLessonNumber = document.getElementById('nextLessonNumber').value;
+            const middleSection = document.getElementById('middleSection').value.split("\n");
+
+            // Update lines for specific sections
+            if (lines[78]) {
+                lines[78] = `<span class="text-sm font-medium text-indigo-600">Lesson ${lessonNumber} of 90</span>`;
+            }
+            if (lines[84]) {
+                lines[84] = `src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfer/complete-spanish-track-${trackNumber}&color=%234f46e5&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">`;
+            }
+            if (lines[91]) {
+                lines[91] = `<p class="text-sm text-gray-700">Key concept: ${keyConcept}</p>`;
+            }
+            if (lines[151]) {
+                lines[151] = `<span class="text-sm font-medium text-indigo-600" id="progress-text">0/${progressNumber} exercises</span>`;
+            }
+            if (lines[totalLines - 265]) {
+                lines[totalLines - 265] = `<a href="lesson${previousLessonNumber}.html">`;
+            }
+            if (lines[totalLines - 57]) {
+                lines[totalLines - 57] = `const total = ${totalExercises}; // Change this to match your total exercises`;
+            }
+            if (lines[totalLines - 38]) {
+                lines[totalLines - 38] = `nextBtn.onclick = () => window.location.href = 'lesson${nextLessonNumber}.html';`;
+            }
+
+            // Remove the old middle section (lines 158-267 from the top)
+            const startLine = 157; // Index 157 corresponds to line 158
+            const endLine = totalLines - 267; // Line 267 is totalLines - 267
+            lines.splice(startLine, endLine - startLine + 1);
+
+            // Insert the new middle section content
+            lines.splice(startLine, 0, ...middleSection);
+
+            // Rebuild the updated content
+            const updatedContent = lines.join("\n");
+            const blob = new Blob([updatedContent], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'lesson.html';
+            link.click();
+        }</script>
+</body>
+</html>
