@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Visual Addon | Language Transfer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+        }
+
+        .scroll-image-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 1rem;
+        }
+
+        .scroll-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            animation: scrollImage 30s linear infinite;
+        }
+
+        @keyframes scrollImage {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -1200%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Icon placeholder -->
+                <link rel="icon" type="image/png" href="https://i.imgur.com/INB8j1b.png">
+                <img src="https://i.imgur.com/Q7IhMjo.gif"
+                     alt="Logo"
+                     class="h-14 w-14 rounded"
+                     style="image-rendering: smooth;"
+                     onmouseover="this.src='https://i.imgur.com/rHGRmKj.gif';"
+                     onmouseout="this.src='https://i.imgur.com/Q7IhMjo.gif';" />
+                <h1 class="text-2xl font-bold hidden sm:block">Spanish Visual Addon for Language Transfer</h1>
+            </div>
+            <nav class="flex space-x-4 text-lg">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="credits.html" class="hover:underline">Credits</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <div class="py-16 bg-white overflow-hidden fade-in" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+
+<div class="flex justify-center text-center">
+    <!-- Left Text Content -->
+    <div class="mt-12 lg:mt-0">
+        <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
+            <img src="https://i.imgur.com/hzktJfS.png" alt="Logo" class="h-45 w-45 rounded mx-auto">
+            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                VAFLaT Feedback Survey!
+            </h2>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">VAFLaT</h3>
+                    <p class="text-gray-400 max-w-md">
+                        This is not an official Language Transfer product.
+                    </p>
+                    <p class="text-gray-400 max-w-md mt-2">Coded with the aid of AI.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                fadeObserver.observe(element);
+            });
+        });
+    </script>
+
+</body></html>
