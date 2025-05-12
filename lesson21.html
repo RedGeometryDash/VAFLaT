@@ -149,7 +149,7 @@ src="https://w.soundcloud.com/player/?url=https://soundcloud.com/languagetransfe
                         <div class="mb-8">
                             <div class="flex justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-700">Lesson Progress</span>
-<span class="text-sm font-medium text-indigo-600" id="progress-text">0/6 exercises</span>
+<span class="text-sm font-medium text-indigo-600" id="progress-text">0/7 exercises</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2.5">
                                 <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
@@ -629,7 +629,7 @@ if (fillInput && submitFillBtn) {
         }
 
         function updateProgress() {
-const total = 6; // Change this to match your total exercises
+const total = 7; // Change this to match your total exercises
             const completed = Array.from(document.querySelectorAll('.exercise-card'))
                 .filter(card => card.dataset.complete === "true")
                 .length;
