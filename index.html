@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spanish Visual Addon | Language Transfer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%);
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -29,7 +61,7 @@
     </script>
 </head>
 <body class="bg-indigo-50">
-    <!-- Header -->
+    <!-- Header (unchanged) -->
     <header class="bg-indigo-600 text-white shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -51,63 +83,70 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Enhanced Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Hero Section -->
-        <section class="bg-indigo-700 text-white rounded-lg p-8 mb-8 text-center">
-            <h2 class="text-3xl font-bold mb-4">Learn Spanish Quickly and With Minimal Effort!</h2>
+        <section class="hero-section text-white rounded-xl p-8 mb-12 text-center shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 sm:text-4xl">Learn Spanish Quickly and With Minimal Effort!</h2>
             <p class="text-xl mb-6">Spanish Visual Addon for Language Transfer</p>
 
-            <div class="flex flex-col items-center space-y-3 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+            <div class="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
                 <a href="lesson1.html">
-                    <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
-                        Start The First Lesson
+                    <button class="cta-button bg-white text-indigo-800 px-8 py-3 rounded-lg font-bold hover:bg-indigo-100 text-lg">
+                        <i class="fas fa-play mr-2"></i> Start The First Lesson
                     </button>
                 </a>
                 <a id="resume-link" href="lesson1.html" style="display: none;">
-                    <button class="bg-white text-indigo-800 px-6 py-2 rounded-lg font-bold hover:bg-indigo-100">
-                        Resume From Last Checkpoint
+                    <button class="cta-button bg-white text-indigo-800 px-8 py-3 rounded-lg font-bold hover:bg-indigo-100 text-lg">
+                        <i class="fas fa-redo mr-2"></i> Resume From Last Checkpoint
                     </button>
                 </a>
             </div>
         </section>
 
-
         <!-- Features -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Why use this site as opposed to others?</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-indigo-700 mb-2">Quick Learning Time</h3>
-                    <p>Learn all you need to become an Intermediate-Spanish Speaker in 90 days, 10 minutes a day, with the skills to get even better!</p>
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-indigo-800 mb-8 text-center">Why use this site as opposed to others?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-indigo-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-bolt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-700 mb-3 text-center">Quick Learning Time</h3>
+                    <p class="text-gray-600 text-center">Learn all you need to become an Intermediate-Spanish Speaker in 90 days, 10 minutes a day, with the skills to get even better!</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-indigo-700 mb-2">Amazing Verb Teaching</h3>
-                    <p>Mihalis Eleftheriou teaches verb endings in ways that almost make them hard to forget. No memorization needed!</p>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-indigo-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-magic text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-700 mb-3 text-center">Amazing Verb Teaching</h3>
+                    <p class="text-gray-600 text-center">Mihalis Eleftheriou teaches verb endings in ways that almost make them hard to forget. No memorization needed!</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-indigo-700 mb-2">Free</h3>
-                    <p>This is all the work of Mihalis Eleftheriou. He chose to make Language Transfer free!</p>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-indigo-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-gift text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-700 mb-3 text-center">Free</h3>
+                    <p class="text-gray-600 text-center">This is all the work of Mihalis Eleftheriou. He chose to make Language Transfer free!</p>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
-        <section class="bg-indigo-100 p-8 rounded-lg text-center">
-            <h2 class="text-2xl font-bold text-indigo-800 mb-4">Want to donate or try out the original?</h2>
-            <div class="flex flex-col items-center space-y-3 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                <button onclick="window.location.href='https://www.languagetransfer.org/donations'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
-                    Donate to Language Transfer
+        <section class="bg-indigo-100 p-8 rounded-xl text-center shadow-inner">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Want to donate or try out the original?</h2>
+            <div class="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
+                <button onclick="window.location.href='https://www.languagetransfer.org/donations'" class="cta-button bg-indigo-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-indigo-800 text-lg">
+                    <i class="fas fa-heart mr-2"></i> Donate to Language Transfer
                 </button>
-                <button onclick="window.location.href='https://www.languagetransfer.org/'" class="bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-800">
-                    Try the Original
+                <button onclick="window.location.href='https://www.languagetransfer.org/'" class="cta-button bg-indigo-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-indigo-800 text-lg">
+                    <i class="fas fa-external-link-alt mr-2"></i> Try the Original
                 </button>
             </div>
         </section>
-
     </main>
 
-
+    <!-- Footer (unchanged) -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between">
@@ -121,6 +160,7 @@
             </div>
         </div>
     </footer>
+    
     <script>
         const resumeLink = document.getElementById('resume-link');
         const lastLesson = localStorage.getItem('lastLesson');
@@ -130,6 +170,5 @@
             resumeLink.style.display = 'inline-block'; // show the button
         }
     </script>
-
 </body>
 </html>

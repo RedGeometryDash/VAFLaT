@@ -17,6 +17,7 @@
         body {
             display: flex;
             flex-direction: column;
+            font-family: 'Poppins', sans-serif;
         }
         
         main {
@@ -52,10 +53,27 @@
                 top: -1200%;
             }
         }
+
+        .credit-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4f46e5;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (unchanged) -->
     <header class="bg-indigo-600 text-white shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -77,41 +95,79 @@
         </div>
     </header>
     
-    <!-- Main Content -->
-    <main>
-        <!-- About Section -->
-        <div class="py-16 bg-white overflow-hidden fade-in" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+    <!-- Main Content - Enhanced -->
+    <main class="bg-gray-50">
+        <section class="py-16 fade-in">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
+                        Credits & Acknowledgements
+                    </h2>
+                </div>
 
-<div class="flex justify-center text-center">
-    <!-- Left Text Content -->
-    <div class="mt-12 lg:mt-0">
-        <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
-            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                Credits
-            </h2>
-            <div class="mt-6 text-gray-500 space-y-6">
-                <p>
-                    Language Transfer &amp; Mihalis 
-                    Eleftheriou (www.languagetransfer.org) for the audio lessons.
-                </p>
-                <p>
-                    Deepsite &amp; ChatGPT for the coding.
-                </p>
-                <p>
-                    Myself for the logo and all the text you can see.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Credit Card 1 -->
+                    <div class="credit-card bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-headphones text-indigo-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Audio Lessons</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            All audio lessons are created by:
+                        </p>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="font-medium text-indigo-600">Language Transfer</p>
+                            <p class="text-gray-700">Mihalis Eleftheriou</p>
+                            <a href="https://www.languagetransfer.org" target="_blank" class="text-indigo-500 hover:underline inline-block mt-2">
+                                www.languagetransfer.org
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card 2 -->
+                    <div class="credit-card bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-code text-indigo-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Development</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            For the coding AI was used for assistance:
+                        </p>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="font-medium text-indigo-600">Deepsite</p>
+                            <p class="font-medium text-indigo-600">ChatGPT</p>
+                            <p class="text-gray-700 mt-2">AI-assisted development</p>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card 3 -->
+                    <div class="credit-card bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-pen-fancy text-indigo-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Design & Content</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            All visual elements and textual content were created by:
+                        </p>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="font-medium text-indigo-600">Evan (RedGD)</p>
+                            <p class="text-gray-700">Logo design</p>
+                            <p class="text-gray-700">Text content</p>
+                            <p class="text-gray-700">Visual elements</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unchanged) -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between">
@@ -146,12 +202,9 @@
             }, { threshold: 0.1 });
             
             fadeElements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 fadeObserver.observe(element);
             });
         });
     </script>
-
-</body></html>
+</body>
+</html>
