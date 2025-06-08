@@ -103,7 +103,15 @@
                 </a>
             </div>
         </section>
-
+        <!-- Progress Recovery Box -->
+        <section class="bg-white border border-indigo-300 rounded-xl p-6 mb-12 shadow-md text-center">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-2">Resuming Lost Progress</h3>
+            <p class="text-gray-600 mb-4">Since June 8th we've migrated to <strong>vaflat.xyz</strong>, so you may find that your progress is now reset. To get your progress back, please type the <strong>lesson number</strong> you were previously on below:</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <input type="number" id="manual-lesson-input" min="1" placeholder="e.g. 25" class="border border-indigo-400 rounded px-4 py-2 w-40 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button onclick="setManualLesson()" class="bg-indigo-700 text-white px-6 py-2 rounded hover:bg-indigo-800 font-semibold">Restore Progress</button>
+            </div>
+        </section>
         <!-- Features -->
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-indigo-800 mb-8 text-center">Why use this site as opposed to others?</h2>
@@ -160,7 +168,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
         const resumeLink = document.getElementById('resume-link');
         const lastLesson = localStorage.getItem('lastLesson');
@@ -168,6 +176,21 @@
         if (lastLesson) {
             resumeLink.href = lastLesson;
             resumeLink.style.display = 'inline-block'; // show the button
+        }
+    </script>
+    <script>
+        function setManualLesson() {
+            const inputVal = document.getElementById('manual-lesson-input').value.trim();
+            const lessonNum = parseInt(inputVal, 10);
+            if (!isNaN(lessonNum) && lessonNum > 0) {
+                const lessonFile = `lesson${lessonNum}.html`;
+                localStorage.setItem('lastLesson', lessonFile);
+                resumeLink.href = lessonFile;
+                resumeLink.style.display = 'inline-block';
+                alert(`Progress restored to lesson ${lessonNum}`);
+            } else {
+                alert("Please enter a valid positive lesson number");
+            }
         }
     </script>
 </body>
