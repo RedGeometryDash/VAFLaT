@@ -82,7 +82,7 @@
             }
         }
 
-        /* Completion Screen */
+        /* Completion Screen - Responsive */
         .completion-screen {
             position: fixed;
             top: 0;
@@ -97,6 +97,8 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.8s ease;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
             .completion-screen.active {
@@ -105,9 +107,10 @@
             }
 
         .completion-logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 2rem;
+            max-width: 90%;
+            width: min(400px, 80vw);
+            height: auto;
+            margin-bottom: 1rem;
             transform: translateY(0);
             transition: transform 1s ease 0.8s, opacity 0.8s ease;
             opacity: 0;
@@ -126,6 +129,10 @@
             transform: translateY(20px);
             opacity: 0;
             transition: transform 0.8s ease 1.2s, opacity 0.8s ease 1.2s;
+            width: 100%;
+            max-width: 400px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .completion-screen.active .completion-buttons {
@@ -134,13 +141,14 @@
         }
 
         .completion-btn {
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
             text-align: center;
-            width: 250px;
-            font-size: 1.1rem;
+            width: 100%;
+            font-size: 1rem;
+            box-sizing: border-box;
         }
 
         .completion-btn-primary {
@@ -165,6 +173,24 @@
                 background: rgba(255, 255, 255, 0.2);
                 border-color: rgba(255, 255, 255, 0.4);
             }
+
+        /* Completion Text */
+        .completion-text {
+            font-size: clamp(1.25rem, 5vw, 1.75rem);
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin: 0 20px 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
+            max-width: 90%;
+        }
+
+        .completion-screen.active .completion-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Transition for main content */
         .transition-content {
@@ -202,29 +228,12 @@
             color: #e2e8f0;
         }
 
-        /* Update completion screen text */
-        .completion-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: transform 0.8s ease 0.5s, opacity 0.8s ease 0.5s;
-        }
-
-        .completion-screen.active .completion-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Answer Button Styling - Updated text to white */
         .answer-btn {
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(99, 102, 241, 0.3);
             transition: all 0.3s ease;
-            color: white !important; /* Force white text */
+            color: white !important;
         }
 
             .answer-btn:hover {
@@ -310,6 +319,18 @@
             backdrop-filter: blur(5px);
             border-top: 1px solid rgba(99, 102, 241, 0.3);
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .completion-logo {
+                width: min(300px, 70vw);
+                margin-bottom: 0.5rem;
+            }
+
+            .completion-text {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -322,14 +343,11 @@
     <div class="floating-planet" style="width: 100px; height: 100px; background: radial-gradient(circle, rgba(236,72,153,0.2) 0%, rgba(236,72,153,0) 70%); top: 30%; right: 20%; animation-delay: 4s;"></div>
 
     <!-- Completion Screen -->
-    <div class="completion-screen min-h-screen flex flex-col items-center justify-center" id="completionScreen">
-        <div class="completion-text -mt-16 mb-20 text-3xl font-bold text-center">
-            You've just learned 3000 words of Spanish!
-        </div>
-        <div class="completion-logo w-[400px] mb-20">
+    <div class="completion-screen" id="completionScreen">
+        <div class="completion-logo">
             <img src="https://i.imgur.com/Q7IhMjo.gif" alt="VAFLaT Logo" class="w-full h-auto">
         </div>
-        <div class="completion-buttons flex flex-col gap-4">
+        <div class="completion-buttons">
             <button class="completion-btn completion-btn-primary" onclick="window.location.href='lesson1.html'">
                 <i class="fas fa-play mr-2"></i> Try VAFLaT
             </button>
@@ -341,515 +359,516 @@
             </button>
         </div>
     </div>
-        <!-- Main Content Wrapper -->
-        <div id="contentWrapper" class="transition-content">
-            <!-- Header -->
-            <header class="text-white shadow-lg">
-                <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                    <div class="flex items-center space-x-3">
-                        <img src="https://i.imgur.com/Q7IhMjo.gif"
-                             alt="Logo"
-                             class="h-14 w-14 rounded"
-                             style="image-rendering: smooth;"
-                             onmouseover="this.src='https://i.imgur.com/rHGRmKj.gif';"
-                             onmouseout="this.src='https://i.imgur.com/Q7IhMjo.gif';" />
-                        <h1 class="text-2xl font-bold hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">VAFLaT Demo</h1>
-                    </div>
-                    <nav class="flex space-x-4 text-lg">
-                        <a href="index.html" class="hover:text-indigo-300 transition">Home</a>
-                        <a href="about.html" class="hover:text-indigo-300 transition">About</a>
-                        <a href="credits.html" class="hover:text-indigo-300 transition">Credits</a>
-                    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div id="contentWrapper" class="transition-content">
+        <!-- Header -->
+        <header class="text-white shadow-lg">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="https://i.imgur.com/Q7IhMjo.gif"
+                         alt="Logo"
+                         class="h-14 w-14 rounded"
+                         style="image-rendering: smooth;"
+                         onmouseover="this.src='https://i.imgur.com/rHGRmKj.gif';"
+                         onmouseout="this.src='https://i.imgur.com/Q7IhMjo.gif';" />
+                    <h1 class="text-2xl font-bold hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">VAFLaT Demo</h1>
                 </div>
-            </header>
+                <nav class="flex space-x-4 text-lg">
+                    <a href="index.html" class="hover:text-indigo-300 transition">Home</a>
+                    <a href="about.html" class="hover:text-indigo-300 transition">About</a>
+                    <a href="credits.html" class="hover:text-indigo-300 transition">Credits</a>
+                </nav>
+            </div>
+        </header>
 
-            <!-- Main Content -->
-            <main class="container mx-auto px-4 py-8 relative z-10">
-                <!-- Your existing exercise content... -->
-                <div class="flex flex-col">
-                    <!-- Right Column - Exercises -->
-                    <div class="w-full">
-                        <div class="rounded-xl overflow-hidden mb-8">
-                            <div class="p-6">
-                                <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-                                    <i class="fas fa-rocket mr-3 text-indigo-400"></i> Practice Exercises
-                                </h2>
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8 relative z-10">
+            <!-- Your existing exercise content... -->
+            <div class="flex flex-col">
+                <!-- Right Column - Exercises -->
+                <div class="w-full">
+                    <div class="rounded-xl overflow-hidden mb-8">
+                        <div class="p-6">
+                            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                                <i class="fas fa-rocket mr-3 text-indigo-400"></i> Practice Exercises
+                            </h2>
 
-                                <!-- Progress -->
-                                <div class="mb-8">
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-sm font-medium text-gray-300">Lesson Progress</span>
-                                        <span class="text-sm font-medium text-indigo-300" id="progress-text">0/4 exercises</span>
-                                    </div>
-                                    <div class="w-full bg-gray-800 rounded-full h-2.5">
-                                        <div id="progress-bar" class="h-2.5 rounded-full" style="width: 0%"></div>
-                                    </div>
+                            <!-- Progress -->
+                            <div class="mb-8">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-300">Lesson Progress</span>
+                                    <span class="text-sm font-medium text-indigo-300" id="progress-text">0/4 exercises</span>
                                 </div>
-
-                                <!-- Exercise 1 - Multiple Choice -->
-                                <div class="exercise-card exercise-1 mb-6" data-complete="false">
-                                    <div class="p-6 transition-all duration-200 ease-in-out">
-                                        <div class="flex items-start mb-4">
-                                            <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                                <span class="font-bold">1</span>
-                                            </div>
-                                            <div class="flex-grow w-full">
-                                                <h3 class="font-bold text-white mb-2">
-                                                    How do you say "he/she is normal" in Spanish?
-                                                </h3>
-                                                <p class="text-sm text-gray-400 mb-4">
-                                                    The pronoun isn't usually required in Spanish.
-                                                </p>
-                                                <div class="exercise-note">
-                                                    “Es” in Spanish means “he/she/it is.” All words ending in -al in English (eg. normal) are the same in Spanish.
-                                                </div>
-                                                <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        A. Soy normal
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
-                                                        B. Es normal
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        C. Estoy normal
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        D. Son normal
-                                                    </button>
-                                                </div>
-                                                <div class="flex justify-end">
-                                                    <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
-                                                        Check Answer
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Exercise 2 - Fill in the Blank -->
-                                <div class="exercise-card exercise-2 mb-6" data-complete="false">
-                                    <div class="p-6 transition-all duration-200 ease-in-out">
-                                        <div class="flex items-start mb-4">
-                                            <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                                <span class="font-bold">2</span>
-                                            </div>
-                                            <div class="w-full">
-                                                <h3 class="font-bold text-white mb-2">Complete the sentence:</h3>
-                                                <p class="text-sm text-gray-400 mb-4">"Normally it's important."</p>
-                                                <div class="exercise-note">
-                                                    Many words ending with -ant in English are the same in Spanish but end with -ante. -mente in Spanish is equivalent to -ly in English (eg. normally → normalmente).
-                                                </div>
-                                                <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-4">
-                                                    <p class="text-white">
-                                                        <span class="inline-block w-24 border-b-2 border-gray-600 mx-1"></span>.
-                                                    </p>
-                                                </div>
-                                                <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                                                    <input type="text"
-                                                           class="fill-input w-full sm:flex-1 rounded-lg px-4 py-2 focus:outline-none"
-                                                           placeholder="Type your answer"
-                                                           data-answer="normalmente es importante">
-                                                    <button class="submit-fill-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
-                                                        Submit
-                                                    </button>
-                                                    <div class="hidden sm:flex flex-wrap gap-2 mt-3">
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="á">á</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="é">é</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="í">í</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ó">ó</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ú">ú</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ñ">ñ</button>
-                                                        <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ü">ü</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Exercise 3 - Multiple Choice -->
-                                <div class="exercise-card exercise-3 mb-6" data-complete="false">
-                                    <div class="p-6 transition-all duration-200 ease-in-out">
-                                        <div class="flex items-start mb-4">
-                                            <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                                <span class="font-bold">3</span>
-                                            </div>
-                                            <div class="flex-grow w-full">
-                                                <h3 class="font-bold text-white mb-2">
-                                                    How do you say "I want confirmation" in Spanish?
-                                                </h3>
-                                                <p class="text-sm text-gray-400 mb-4">
-                                                    The pronoun isn't usually required in Spanish.
-                                                </p>
-                                                <div class="exercise-note">
-                                                    "I want" in Spanish is "quiero." All words ending in -ation in English are the same in Spanish but end in -ación.
-                                                </div>
-                                                <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        A. Quiero confirmation
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        B. Quieres confirmación
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
-                                                        C. Quiero confirmación
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        D. Queremos confirmation
-                                                    </button>
-                                                </div>
-                                                <div class="flex justify-end">
-                                                    <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
-                                                        Check Answer
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Exercise 4 - Multiple Choice -->
-                                <div class="exercise-card exercise-4 mb-6" data-complete="false">
-                                    <div class="p-6 transition-all duration-200 ease-in-out">
-                                        <div class="flex items-start mb-4">
-                                            <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                                <span class="font-bold">4</span>
-                                            </div>
-                                            <div class="flex-grow w-full">
-                                                <h3 class="font-bold text-white mb-2">
-                                                    How do you say "I don't want to celebrate" in Spanish?
-                                                </h3>
-                                                <p class="text-sm text-gray-400 mb-4">
-                                                    The pronoun isn't usually required in Spanish.
-                                                </p>
-                                                <div class="exercise-note">
-                                                    To make a verb negative you simply put "no" before it (eg. I don't want → no quiero). All -ación words can be turned into -ar verbs, just replace the -ación with -ar to get the unconjugated verb (eg. celebración → celebrar).
-                                                </div>
-                                                <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        A. Quiero celebrar
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        B. No celebrar
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
-                                                        C. Yo quiero celebrar
-                                                    </button>
-                                                    <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
-                                                        D. No quiero celebrar
-                                                    </button>
-                                                </div>
-                                                <div class="flex justify-end">
-                                                    <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
-                                                        Check Answer
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex justify-between px-4 py-4 gap-2">
-                                    <button id="next-btn" disabled class="w-full bg-gray-700 text-gray-400 px-3 py-2 rounded-lg font-medium text-sm sm:text-base whitespace-nowrap cursor-not-allowed transition">
-                                        Try VAFLaT <i class="fas fa-arrow-right ml-2"></i>
-                                    </button>
+                                <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                    <div id="progress-bar" class="h-2.5 rounded-full" style="width: 0%"></div>
                                 </div>
                             </div>
-                            </div>
-                    </div>
-                </div>
-            </main>
 
-            <footer class="py-8">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-col md:flex-row justify-between">
-                        <div class="mb-6 md:mb-0">
-                            <h3 class="text-xl font-bold mb-4 text-white">VAFLaT</h3>
-                            <p class="text-gray-400 max-w-md">
-                                This is not an official Language Transfer product.
-                            </p>
-                            <p class="text-gray-400 max-w-md mt-2">Coded with the aid of AI.</p>
+                            <!-- Exercise 1 - Multiple Choice -->
+                            <div class="exercise-card exercise-1 mb-6" data-complete="false">
+                                <div class="p-6 transition-all duration-200 ease-in-out">
+                                    <div class="flex items-start mb-4">
+                                        <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                            <span class="font-bold">1</span>
+                                        </div>
+                                        <div class="flex-grow w-full">
+                                            <h3 class="font-bold text-white mb-2">
+                                                How do you say "he/she is normal" in Spanish?
+                                            </h3>
+                                            <p class="text-sm text-gray-400 mb-4">
+                                                The pronoun isn't usually required in Spanish.
+                                            </p>
+                                            <div class="exercise-note">
+                                                "Es" in Spanish means "he/she/it is." All words ending in -al in English (eg. normal) are the same in Spanish.
+                                            </div>
+                                            <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    A. Soy normal
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
+                                                    B. Es normal
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    C. Estoy normal
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    D. Son normal
+                                                </button>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
+                                                    Check Answer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Exercise 2 - Fill in the Blank -->
+                            <div class="exercise-card exercise-2 mb-6" data-complete="false">
+                                <div class="p-6 transition-all duration-200 ease-in-out">
+                                    <div class="flex items-start mb-4">
+                                        <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                            <span class="font-bold">2</span>
+                                        </div>
+                                        <div class="w-full">
+                                            <h3 class="font-bold text-white mb-2">Complete the sentence:</h3>
+                                            <p class="text-sm text-gray-400 mb-4">"Normally it's important."</p>
+                                            <div class="exercise-note">
+                                                Many words ending with -ant in English are the same in Spanish but end with -ante. -mente in Spanish is equivalent to -ly in English (eg. normally → normalmente).
+                                            </div>
+                                            <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-4">
+                                                <p class="text-white">
+                                                    <span class="inline-block w-24 border-b-2 border-gray-600 mx-1"></span>.
+                                                </p>
+                                            </div>
+                                            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                                <input type="text"
+                                                       class="fill-input w-full sm:flex-1 rounded-lg px-4 py-2 focus:outline-none"
+                                                       placeholder="Type your answer"
+                                                       data-answer="normalmente es importante">
+                                                <button class="submit-fill-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
+                                                    Submit
+                                                </button>
+                                                <div class="hidden sm:flex flex-wrap gap-2 mt-3">
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="á">á</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="é">é</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="í">í</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ó">ó</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ú">ú</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ñ">ñ</button>
+                                                    <button type="button" class="accent-btn btn-primary px-3 py-1 rounded-lg font-medium transition" data-char="ü">ü</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Exercise 3 - Multiple Choice -->
+                            <div class="exercise-card exercise-3 mb-6" data-complete="false">
+                                <div class="p-6 transition-all duration-200 ease-in-out">
+                                    <div class="flex items-start mb-4">
+                                        <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                            <span class="font-bold">3</span>
+                                        </div>
+                                        <div class="flex-grow w-full">
+                                            <h3 class="font-bold text-white mb-2">
+                                                How do you say "I want confirmation" in Spanish?
+                                            </h3>
+                                            <p class="text-sm text-gray-400 mb-4">
+                                                The pronoun isn't usually required in Spanish.
+                                            </p>
+                                            <div class="exercise-note">
+                                                "I want" in Spanish is "quiero." All words ending in -ation in English are the same in Spanish but end in -ación.
+                                            </div>
+                                            <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    A. Quiero confirmation
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    B. Quieres confirmación
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
+                                                    C. Quiero confirmación
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    D. Queremos confirmation
+                                                </button>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
+                                                    Check Answer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Exercise 4 - Multiple Choice -->
+                            <div class="exercise-card exercise-4 mb-6" data-complete="false">
+                                <div class="p-6 transition-all duration-200 ease-in-out">
+                                    <div class="flex items-start mb-4">
+                                        <div class="flex-shrink-0 bg-indigo-900 text-indigo-300 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                            <span class="font-bold">4</span>
+                                        </div>
+                                        <div class="flex-grow w-full">
+                                            <h3 class="font-bold text-white mb-2">
+                                                How do you say "I don't want to celebrate" in Spanish?
+                                            </h3>
+                                            <p class="text-sm text-gray-400 mb-4">
+                                                The pronoun isn't usually required in Spanish.
+                                            </p>
+                                            <div class="exercise-note">
+                                                To make a verb negative you simply put "no" before it (eg. I don't want → no quiero). All -ación words can be turned into -ar verbs, just replace the -ación with -ar to get the unconjugated verb (eg. celebración → celebrar).
+                                            </div>
+                                            <div class="answer-group grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    A. Quiero celebrar
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    B. No celebrar
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition">
+                                                    C. Yo quiero celebrar
+                                                </button>
+                                                <button class="answer-btn w-full rounded-lg px-4 py-3 text-left transition" data-correct="true">
+                                                    D. No quiero celebrar
+                                                </button>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <button class="check-btn btn-primary px-4 py-2 rounded-lg font-medium transition">
+                                                    Check Answer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between px-4 py-4 gap-2">
+                                <button id="next-btn" disabled class="w-full bg-gray-700 text-gray-400 px-3 py-2 rounded-lg font-medium text-sm sm:text-base whitespace-nowrap cursor-not-allowed transition">
+                                    Try VAFLaT <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </main>
 
-        <script>
-            // Create stars background
-            function createStars() {
-                const starsContainer = document.getElementById('stars');
-                const starsCount = 100;
+        <footer class="py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold mb-4 text-white">VAFLaT</h3>
+                        <p class="text-gray-400 max-w-md">
+                            This is not an official Language Transfer product.
+                        </p>
+                        <p class="text-gray-400 max-w-md mt-2">Coded with the aid of AI.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-                for (let i = 0; i < starsCount; i++) {
-                    const star = document.createElement('div');
-                    star.classList.add('star');
+    <script>
+        // Create stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
 
-                    // Random size between 1-3px
-                    const size = Math.random() * 2 + 1;
-                    star.style.width = `${size}px`;
-                    star.style.height = `${size}px`;
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
 
-                    // Random position
-                    star.style.left = `${Math.random() * 100}%`;
-                    star.style.top = `${Math.random() * 100}%`;
+                // Random size between 1-3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
 
-                    // Random animation duration (3-8s) and delay (0-5s)
-                    const duration = Math.random() * 5 + 3;
-                    const delay = Math.random() * 5;
-                    star.style.setProperty('--duration', `${duration}s`);
-                    star.style.setProperty('--opacity', Math.random() * 0.5 + 0.5);
-                    star.style.animationDelay = `${delay}s`;
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
 
-                    starsContainer.appendChild(star);
-                }
+                // Random animation duration (3-8s) and delay (0-5s)
+                const duration = Math.random() * 5 + 3;
+                const delay = Math.random() * 5;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--opacity', Math.random() * 0.5 + 0.5);
+                star.style.animationDelay = `${delay}s`;
+
+                starsContainer.appendChild(star);
             }
+        }
 
-            // Initialize stars when DOM is loaded
-            document.addEventListener('DOMContentLoaded', createStars);
+        // Initialize stars when DOM is loaded
+        document.addEventListener('DOMContentLoaded', createStars);
 
-            function markExerciseComplete(className) {
-                const exercise = document.querySelector(`.${className}`);
-                if (exercise && exercise.dataset.complete !== "true") {
-                    exercise.dataset.complete = "true";
-                    updateProgress();
-                }
+        function markExerciseComplete(className) {
+            const exercise = document.querySelector(`.${className}`);
+            if (exercise && exercise.dataset.complete !== "true") {
+                exercise.dataset.complete = "true";
+                updateProgress();
             }
+        }
 
-            document.querySelectorAll('.exercise-card').forEach(card => {
-                const checkBtn = card.querySelector('.check-btn');
-                const answerButtons = card.querySelectorAll('.answer-btn');
-                const fillInput = card.querySelector('.fill-input');
-                const submitFillBtn = card.querySelector('.submit-fill-btn');
-                const matchBtn = card.querySelector('.check-matches-btn');
-                const leftItems = card.querySelectorAll('.match-item[data-group="left"]');
-                const rightItems = card.querySelectorAll('.match-item[data-group="right"]');
+        document.querySelectorAll('.exercise-card').forEach(card => {
+            const checkBtn = card.querySelector('.check-btn');
+            const answerButtons = card.querySelectorAll('.answer-btn');
+            const fillInput = card.querySelector('.fill-input');
+            const submitFillBtn = card.querySelector('.submit-fill-btn');
+            const matchBtn = card.querySelector('.check-matches-btn');
+            const leftItems = card.querySelectorAll('.match-item[data-group="left"]');
+            const rightItems = card.querySelectorAll('.match-item[data-group="right"]');
 
-                // MULTIPLE CHOICE
-                if (checkBtn && answerButtons.length) {
-                    let selected = null;
+            // MULTIPLE CHOICE
+            if (checkBtn && answerButtons.length) {
+                let selected = null;
 
-                    answerButtons.forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            answerButtons.forEach(b => b.classList.remove('ring', 'ring-indigo-400'));
-                            selected = btn;
-                            btn.classList.add('ring', 'ring-indigo-400');
-                        });
+                answerButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        answerButtons.forEach(b => b.classList.remove('ring', 'ring-indigo-400'));
+                        selected = btn;
+                        btn.classList.add('ring', 'ring-indigo-400');
                     });
-
-                    checkBtn.addEventListener('click', () => {
-                        const card = checkBtn.closest('.exercise-card');
-                        const localButtons = card.querySelectorAll('.answer-btn');
-                        let selectedLocal = null;
-
-                        localButtons.forEach(btn => {
-                            if (btn.classList.contains('ring')) {
-                                selectedLocal = btn;
-                            }
-                        });
-                        if (!selectedLocal) {
-                            alert('Please select an answer first.');
-                            return;
-                        }
-                        localButtons.forEach(btn => {
-                            const isCorrect = btn.dataset.correct === 'true';
-                            btn.classList.remove('bg-green-900', 'bg-red-900', 'border-green-500', 'border-red-500');
-
-                            if (btn === selectedLocal) {
-                                btn.classList.add(isCorrect ? 'bg-green-900' : 'bg-red-900');
-                                btn.classList.add(isCorrect ? 'border-green-500' : 'border-red-500');
-                            }
-                        });
-                        const correctBtns = [...localButtons].filter(btn => btn.dataset.correct === 'true');
-                        correctBtns.forEach(btn => {
-                            btn.classList.add('bg-green-900', 'border-green-500');
-                        });
-                        localButtons.forEach(btn => btn.disabled = true);
-                        checkBtn.disabled = true;
-
-                        card.dataset.complete = "true";
-                        updateProgress();
-                    });
-                }
-
-                // FILL IN THE BLANK
-                if (fillInput && submitFillBtn) {
-                    submitFillBtn.addEventListener('click', () => {
-                        const card = submitFillBtn.closest('.exercise-card');
-                        const userAnswer = fillInput.value.trim();
-                        let correctAnswers;
-                        try {
-                            correctAnswers = JSON.parse(fillInput.dataset.answer);
-                        } catch {
-                            correctAnswers = [fillInput.dataset.answer.trim()];
-                        }
-
-                        const lowerUser = userAnswer.toLowerCase();
-                        const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                        const removeSpaces = str => str.replace(/\s+/g, "");
-                        fillInput.classList.remove(
-                            'border-green-500', 'bg-green-900',
-                            'border-red-500', 'bg-red-900',
-                            'border-yellow-500', 'bg-yellow-900'
-                        );
-                        let matched = false;
-                        for (let i = 0; i < correctAnswers.length; i++) {
-                            const ans = correctAnswers[i].trim().toLowerCase();
-                            if (lowerUser === ans) {
-                                fillInput.classList.add('border-green-500', 'bg-green-900');
-                                matched = true; break;
-                            } else if (removeAccents(lowerUser) === removeAccents(ans)) {
-                                fillInput.classList.add('border-yellow-500', 'bg-yellow-900');
-                                fillInput.value = correctAnswers[i]; matched = true; break;
-                            } else if (removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(ans))) {
-                                fillInput.classList.add('border-yellow-500', 'bg-yellow-900');
-                                fillInput.value = correctAnswers[i]; matched = true; break;
-                            }
-                        }
-                        if (!matched) {
-                            fillInput.classList.add('border-red-500', 'bg-red-900');
-                            fillInput.value = correctAnswers[0];
-                        }
-                        fillInput.disabled = true;
-                        submitFillBtn.disabled = true;
-                        card.dataset.complete = "true";
-                        updateProgress();
-                    });
-                }
-
-                // MATCHING
-                if (matchBtn && leftItems.length && rightItems.length) {
-                    let selectedLeft = null;
-                    let selectedRight = null;
-
-                    leftItems.forEach(item => {
-                        item.addEventListener('click', () => {
-                            leftItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
-                            item.classList.add('ring-2', 'ring-indigo-400');
-                            selectedLeft = item;
-                        });
-                    });
-
-                    rightItems.forEach(item => {
-                        item.addEventListener('click', () => {
-                            rightItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
-                            item.classList.add('ring-2', 'ring-indigo-400');
-                            selectedRight = item;
-                        });
-                    });
-
-                    matchBtn.addEventListener('click', () => {
-                        const correctLeftId = matchBtn.dataset.correctLeft;
-                        const correctRightId = matchBtn.dataset.correctRight;
-
-                        const selectedLeftId = selectedLeft?.dataset.id;
-                        const selectedRightId = selectedRight?.dataset.id;
-
-                        if (!selectedLeftId || !selectedRightId) return;
-
-                        const isCorrect = selectedLeftId === correctLeftId && selectedRightId === correctRightId;
-
-                        const mark = (el, correct) => {
-                            el.classList.add(correct ? 'bg-green-900' : 'bg-red-900');
-                            el.classList.add(correct ? 'border-green-500' : 'border-red-500');
-                        };
-
-                        mark(selectedLeft, selectedLeftId === correctLeftId);
-                        mark(selectedRight, selectedRightId === correctRightId);
-
-                        if (!isCorrect) {
-                            const correctLeftEl = card.querySelector(`.match-item[data-group="left"][data-id="${correctLeftId}"]`);
-                            const correctRightEl = card.querySelector(`.match-item[data-group="right"][data-id="${correctRightId}"]`);
-                            mark(correctLeftEl, true);
-                            mark(correctRightEl, true);
-                        }
-
-                        [...leftItems, ...rightItems].forEach(i => i.classList.add('pointer-events-none'));
-                        matchBtn.disabled = true;
-
-                        card.dataset.complete = "true";
-                        updateProgress();
-                    });
-                }
-            });
-
-            function updateProgress() {
-                const total = 4;
-                const completed = Array.from(document.querySelectorAll('.exercise-card'))
-                    .filter(card => card.dataset.complete === "true")
-                    .length;
-                const percent = (completed / total) * 100;
-
-                const progressBar = document.getElementById('progress-bar');
-                const progressText = document.getElementById('progress-text');
-                const nextBtn = document.getElementById('next-btn');
-
-                if (progressBar) progressBar.style.width = percent + '%';
-                if (progressText) progressText.textContent = `${completed}/${total} exercises`;
-
-                if (nextBtn && completed === total) {
-                    // Change only the background to light cosmic
-                    document.body.classList.add('completed');
-
-                    // Enable next button
-                    nextBtn.disabled = false;
-                    nextBtn.classList.remove('bg-gray-700', 'text-gray-400', 'cursor-not-allowed');
-                    nextBtn.classList.add('btn-primary', 'text-white');
-
-                    // Change click handler to show completion screen
-                    nextBtn.onclick = showCompletionScreen;
-                }
-            }
-
-            function showCompletionScreen() {
-                // Fade out all content
-                document.getElementById('contentWrapper').classList.add('transition-out');
-
-                // After fade out completes, show completion screen
-                setTimeout(() => {
-                    document.getElementById('completionScreen').classList.add('active');
-                }, 800);
-            }
-
-            // Close completion screen when clicking outside (optional)
-            document.getElementById('completionScreen').addEventListener('click', function (e) {
-                if (e.target === this) {
-                    this.classList.remove('active');
-                    document.getElementById('contentWrapper').classList.remove('transition-out');
-                }
-            });
-        </script>
-        <script>
-            const lessonMatch = window.location.pathname.match(/lesson(\d+)\.html/i);
-            if (lessonMatch) {
-                const lessonNumber = parseInt(lessonMatch[1]);
-                const currentLesson = `lesson${lessonNumber}.html`;
-                const savedLesson = localStorage.getItem('lastLesson');
-
-                // Only update if this lesson is newer than the saved one
-                if (!savedLesson || parseInt(savedLesson.match(/\d+/)[0]) < lessonNumber) {
-                    localStorage.setItem('lastLesson', currentLesson);
-                }
-            }
-        </script>
-        <script>
-            document.querySelectorAll('.accent-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const card = button.closest('.exercise-card');
-                    const input = card.querySelector('input[type="text"]');
-                    const char = button.getAttribute('data-char');
-
-                    const start = input.selectionStart;
-                    const end = input.selectionEnd;
-                    const currentValue = input.value;
-
-                    input.value = currentValue.slice(0, start) + char + currentValue.slice(end);
-                    input.focus();
-                    input.selectionStart = input.selectionEnd = start + 1;
                 });
+
+                checkBtn.addEventListener('click', () => {
+                    const card = checkBtn.closest('.exercise-card');
+                    const localButtons = card.querySelectorAll('.answer-btn');
+                    let selectedLocal = null;
+
+                    localButtons.forEach(btn => {
+                        if (btn.classList.contains('ring')) {
+                            selectedLocal = btn;
+                        }
+                    });
+                    if (!selectedLocal) {
+                        alert('Please select an answer first.');
+                        return;
+                    }
+                    localButtons.forEach(btn => {
+                        const isCorrect = btn.dataset.correct === 'true';
+                        btn.classList.remove('bg-green-900', 'bg-red-900', 'border-green-500', 'border-red-500');
+
+                        if (btn === selectedLocal) {
+                            btn.classList.add(isCorrect ? 'bg-green-900' : 'bg-red-900');
+                            btn.classList.add(isCorrect ? 'border-green-500' : 'border-red-500');
+                        }
+                    });
+                    const correctBtns = [...localButtons].filter(btn => btn.dataset.correct === 'true');
+                    correctBtns.forEach(btn => {
+                        btn.classList.add('bg-green-900', 'border-green-500');
+                    });
+                    localButtons.forEach(btn => btn.disabled = true);
+                    checkBtn.disabled = true;
+
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+            }
+
+            // FILL IN THE BLANK
+            if (fillInput && submitFillBtn) {
+                submitFillBtn.addEventListener('click', () => {
+                    const card = submitFillBtn.closest('.exercise-card');
+                    const userAnswer = fillInput.value.trim();
+                    let correctAnswers;
+                    try {
+                        correctAnswers = JSON.parse(fillInput.dataset.answer);
+                    } catch {
+                        correctAnswers = [fillInput.dataset.answer.trim()];
+                    }
+
+                    const lowerUser = userAnswer.toLowerCase();
+                    const removeAccents = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const removeSpaces = str => str.replace(/\s+/g, "");
+                    fillInput.classList.remove(
+                        'border-green-500', 'bg-green-900',
+                        'border-red-500', 'bg-red-900',
+                        'border-yellow-500', 'bg-yellow-900'
+                    );
+                    let matched = false;
+                    for (let i = 0; i < correctAnswers.length; i++) {
+                        const ans = correctAnswers[i].trim().toLowerCase();
+                        if (lowerUser === ans) {
+                            fillInput.classList.add('border-green-500', 'bg-green-900');
+                            matched = true; break;
+                        } else if (removeAccents(lowerUser) === removeAccents(ans)) {
+                            fillInput.classList.add('border-yellow-500', 'bg-yellow-900');
+                            fillInput.value = correctAnswers[i]; matched = true; break;
+                        } else if (removeSpaces(removeAccents(lowerUser)) === removeSpaces(removeAccents(ans))) {
+                            fillInput.classList.add('border-yellow-500', 'bg-yellow-900');
+                            fillInput.value = correctAnswers[i]; matched = true; break;
+                        }
+                    }
+                    if (!matched) {
+                        fillInput.classList.add('border-red-500', 'bg-red-900');
+                        fillInput.value = correctAnswers[0];
+                    }
+                    fillInput.disabled = true;
+                    submitFillBtn.disabled = true;
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+            }
+
+            // MATCHING
+            if (matchBtn && leftItems.length && rightItems.length) {
+                let selectedLeft = null;
+                let selectedRight = null;
+
+                leftItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        leftItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
+                        item.classList.add('ring-2', 'ring-indigo-400');
+                        selectedLeft = item;
+                    });
+                });
+
+                rightItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        rightItems.forEach(i => i.classList.remove('ring-2', 'ring-indigo-400'));
+                        item.classList.add('ring-2', 'ring-indigo-400');
+                        selectedRight = item;
+                    });
+                });
+
+                matchBtn.addEventListener('click', () => {
+                    const correctLeftId = matchBtn.dataset.correctLeft;
+                    const correctRightId = matchBtn.dataset.correctRight;
+
+                    const selectedLeftId = selectedLeft?.dataset.id;
+                    const selectedRightId = selectedRight?.dataset.id;
+
+                    if (!selectedLeftId || !selectedRightId) return;
+
+                    const isCorrect = selectedLeftId === correctLeftId && selectedRightId === correctRightId;
+
+                    const mark = (el, correct) => {
+                        el.classList.add(correct ? 'bg-green-900' : 'bg-red-900');
+                        el.classList.add(correct ? 'border-green-500' : 'border-red-500');
+                    };
+
+                    mark(selectedLeft, selectedLeftId === correctLeftId);
+                    mark(selectedRight, selectedRightId === correctRightId);
+
+                    if (!isCorrect) {
+                        const correctLeftEl = card.querySelector(`.match-item[data-group="left"][data-id="${correctLeftId}"]`);
+                        const correctRightEl = card.querySelector(`.match-item[data-group="right"][data-id="${correctRightId}"]`);
+                        mark(correctLeftEl, true);
+                        mark(correctRightEl, true);
+                    }
+
+                    [...leftItems, ...rightItems].forEach(i => i.classList.add('pointer-events-none'));
+                    matchBtn.disabled = true;
+
+                    card.dataset.complete = "true";
+                    updateProgress();
+                });
+            }
+        });
+
+        function updateProgress() {
+            const total = 4;
+            const completed = Array.from(document.querySelectorAll('.exercise-card'))
+                .filter(card => card.dataset.complete === "true")
+                .length;
+            const percent = (completed / total) * 100;
+
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (progressText) progressText.textContent = `${completed}/${total} exercises`;
+
+            if (nextBtn && completed === total) {
+                // Change only the background to light cosmic
+                document.body.classList.add('completed');
+
+                // Enable next button
+                nextBtn.disabled = false;
+                nextBtn.classList.remove('bg-gray-700', 'text-gray-400', 'cursor-not-allowed');
+                nextBtn.classList.add('btn-primary', 'text-white');
+
+                // Change click handler to show completion screen
+                nextBtn.onclick = showCompletionScreen;
+            }
+        }
+
+        function showCompletionScreen() {
+            // Fade out all content
+            document.getElementById('contentWrapper').classList.add('transition-out');
+
+            // After fade out completes, show completion screen
+            setTimeout(() => {
+                document.getElementById('completionScreen').classList.add('active');
+            }, 800);
+        }
+
+        // Close completion screen when clicking outside (optional)
+        document.getElementById('completionScreen').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.getElementById('contentWrapper').classList.remove('transition-out');
+            }
+        });
+    </script>
+    <script>
+        const lessonMatch = window.location.pathname.match(/lesson(\d+)\.html/i);
+        if (lessonMatch) {
+            const lessonNumber = parseInt(lessonMatch[1]);
+            const currentLesson = `lesson${lessonNumber}.html`;
+            const savedLesson = localStorage.getItem('lastLesson');
+
+            // Only update if this lesson is newer than the saved one
+            if (!savedLesson || parseInt(savedLesson.match(/\d+/)[0]) < lessonNumber) {
+                localStorage.setItem('lastLesson', currentLesson);
+            }
+        }
+    </script>
+    <script>
+        document.querySelectorAll('.accent-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.exercise-card');
+                const input = card.querySelector('input[type="text"]');
+                const char = button.getAttribute('data-char');
+
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const currentValue = input.value;
+
+                input.value = currentValue.slice(0, start) + char + currentValue.slice(end);
+                input.focus();
+                input.selectionStart = input.selectionEnd = start + 1;
             });
-        </script>
+        });
+    </script>
 </body>
 </html>
